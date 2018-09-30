@@ -3,6 +3,10 @@
 * **What is an Application class?**<br/>
 A) An Application class is a base class in your Application starts before all other classes like Activities or services are called. You can maintain your application's global state here. While it is NOT mandatory that you need to extend Application class, you can do so by providing your own implementation by creating a subclass and specifying the fully-qualified name of this subclass as the "android:name" attribute in your AndroidManifest.xml's <application> tag.
 
+* **Fragment Lifecycle**<br/>
+A) ![Fragment Lifecycle Image](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers/blob/master/assets/fragment_lifecycle.png)
+
+
 * **What is a Looper?**<br/>
 A) A Looper is a class used to loop through the Message Queue attached to the Thread. By default, a thread halts when the execution completes. But, for Example, if we take Android's Main thread, it should not halt upon execution.
 Rather it should loop through the runnables(Messages) that its assigned in order to work properly. For more info:
