@@ -4,7 +4,8 @@
 A) An Application class is a base class in your Application starts before all other classes like Activities or services are called. You can maintain your application's global state here. While it is NOT mandatory that you need to extend Application class, you can do so by providing your own implementation by creating a subclass and specifying the fully-qualified name of this subclass as the "android:name" attribute in your AndroidManifest.xml's <application> tag.
 
 * **Fragment Lifecycle**<br/>
-A) ![Fragment Lifecycle Image](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers/blob/master/assets/fragment_lifecycle.png)
+A) <br/>
+![Fragment Lifecycle Image](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers/blob/master/assets/fragment_lifecycle.png)
 
 
 * **What is a Looper?**<br/>
