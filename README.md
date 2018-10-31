@@ -12,6 +12,17 @@
     a)Implicit Intent
     b)Explicit Intent
 
+-   **How to Stop a Service?**<br/>
+-   **What is a Service? What are different types of services?**<br/>
+-   **What is an Intent Service? What is the method that differentiates it to make service run in background?**<br/>
+-   **When Intent Service is Useful?**<br/>
+
+-   **What is an Intent Service? What is the method that differentiates it to make service run in background?**<br/>
+-   **How to handle crashing of AsyncTask during screen rotation?**<br/>
+-   **What is the advantage of using Retrofit over AsyncTask?**<br/>
+-   **How to handle multiple network calls using Retrofit?**<br/>
+-   **What is the role of Presenter in MVP?**<br/>
+
 -   **What is Pending Intent?**<br/>
     A)A PendingIntent is a token that you give to a foreign application (e.g. NotificationManager, AlarmManager, Home Screen AppWidgetManager, or other 3rd party applications), which allows the foreign application to use your application's permissions to execute a predefined piece of code. It specifies a task that requires to be performed in future.
 
