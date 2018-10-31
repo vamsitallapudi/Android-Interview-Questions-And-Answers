@@ -13,20 +13,30 @@
     b)Explicit Intent
 
 -   **How to Stop a Service?**<br/>
+    A) To stop a service from an activity we can call stopService(Intent intent) method. To Stop a service from itself, we can call stopSelf() method.
 -   **What is a Service? What are different types of services?**<br/>
--   **What is an Intent Service? What is the method that differentiates it to make service run in background?**<br/>
--   **When Intent Service is Useful?**<br/>
+    A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new thread or use an IntentService.
 
--   **What is an Intent Service? What is the method that differentiates it to make service run in background?**<br/>
+-   **What is an Intent Service?**<br/>
+    A) IntentService is a Service that can perform tasks using worker thread unlike service that blocks main thread.
+-   **What is the method that differentiates it to make Service run in background?**<br/>
+    A) onHandleIntent() is the method that helps the IntentService to run a particular code block declared inside it, in worker/background thread.
+
+-   **How to Stop an IntentService?**<br/>
+    A) An IntentService automatically stops itself after its job is done. We do not need to explicitly call any methods to stop an IntentService unlike Service which requires stopSelf() or StopService(intent:Intent).
+
+-   **When Intent Service is Useful?**<br/>
+    A) The IntentService can be used in long tasks usually with no communication to Main Thread. If communication is required, can use Main Thread handler or broadcast intents. Another case of use is when callbacks are needed (Intent triggered tasks).
+
 -   **How to handle crashing of AsyncTask during screen rotation?**<br/>
+    A) The best way to handle AsyncTask crash is to create a RetainFragment, i.e., a fragment without UI as shown in the gist below: https://gist.github.com/vamsitallapudi/26030c15829d7be8118e42b1fcd0fa42
+    We can also avoid this crash by using RxJava instead of AsyncTask as we will be subscribing and unsubscribing at onResume() and onPause() methods respectively.
 -   **What is the advantage of using Retrofit over AsyncTask?**<br/>
 -   **How to handle multiple network calls using Retrofit?**<br/>
 -   **What is the role of Presenter in MVP?**<br/>
 
 -   **What is Pending Intent?**<br/>
     A)A PendingIntent is a token that you give to a foreign application (e.g. NotificationManager, AlarmManager, Home Screen AppWidgetManager, or other 3rd party applications), which allows the foreign application to use your application's permissions to execute a predefined piece of code. It specifies a task that requires to be performed in future.
-
--   ****
 
 -   **Activity Lifecycle**<br/>
     A)<br/>
