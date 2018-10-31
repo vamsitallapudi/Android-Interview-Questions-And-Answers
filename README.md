@@ -3,6 +3,24 @@
 -   **What is an Application class?**<br/>
     A) An Application class is a base class in your Application starts before all other classes like Activities or services are called. You can maintain your application's global state here. While it is NOT mandatory that you need to extend Application class, you can do so by providing your own implementation by creating a subclass and specifying the fully-qualified name of this subclass as the "android:name" attribute in your AndroidManifest.xml's <application> tag.
 
+-   **What is a Context? What are different types of Contexts?**<br/>
+    A) As the name says, its the context of the current application or object. Context is like a handle to the environment your application is currently running in.
+    We mainly use two types of context. Application context - whose scope is throughout the application and Activity Context - whose scope depends on the Activity Lifecycle.
+
+-   **What is an Intent?**<br/>
+    A) It is a kind of message or information that is passed to the components. It is used to launch an activity, display a web page, send SMS, send email, etc. There are two types of intents in android:
+    a)Implicit Intent
+    b)Explicit Intent
+
+-   **What is Pending Intent?**<br/>
+    A)A PendingIntent is a token that you give to a foreign application (e.g. NotificationManager, AlarmManager, Home Screen AppWidgetManager, or other 3rd party applications), which allows the foreign application to use your application's permissions to execute a predefined piece of code. It specifies a task that requires to be performed in future.
+
+-   ****
+
+-   **Activity Lifecycle**<br/>
+    A)<br/>
+    ![Activity Lifecycle Image](/assets/activity_lifecycle.png)
+
 -   **Fragment Lifecycle**<br/>
     A)<br/>
     ![Fragment Lifecycle Image](/assets/fragment_lifecycle.png)
@@ -30,6 +48,9 @@
     A) It depends. Here with the first statement, i.e, String a = “abc”, JVM will search for a string with “abc” in String constant pool(SCP) and if its not there it will create a new Object.
     If we wrote second statement similarly, i.e., String b = “abc”, then b will point to same string from SCP.
     However, String b = new String(“abc”) always creates a new String object.
+
+-  **What is Alarm Manager?**<br/>
+    A) AlarmManager is a class which helps scheduling your Application code to run at some point of time or at particular time intervals in future. When an alarm goes off, the Intent that had been registered for it is broadcast by the system, automatically starting the target application if it is not already running. Registered alarms are retained while the device is asleep (and can optionally wake the device up if they go off during that time), but will be cleared if it is turned off and rebooted.
 
 ### Dagger 2 Related Questions:
 
