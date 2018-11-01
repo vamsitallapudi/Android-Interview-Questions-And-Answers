@@ -32,8 +32,17 @@
     A) The best way to handle AsyncTask crash is to create a RetainFragment, i.e., a fragment without UI as shown in the gist below: https://gist.github.com/vamsitallapudi/26030c15829d7be8118e42b1fcd0fa42
     We can also avoid this crash by using RxJava instead of AsyncTask as we will be subscribing and unsubscribing at onResume() and onPause() methods respectively.
 -   **What is the advantage of using Retrofit over AsyncTask?**<br/>
+    A) Retrofit reduces boiler plate code by internally using GSON library which helps parsing the json file automatically.
+    Retrofit is a type safe library. This means - it checks if wrong data type is assigned to variables at compilation time itself.
+    More use-cases at: https://stackoverflow.com/a/16903205/3424919
+
 -   **How to handle multiple network calls using Retrofit?**<br/>
+      A) In Retrofit, we can call the operations asynchronously by using enqueue() method where as to call operations synchronously, we can use execute() method. In addition, we can use zip() operator from RxJava to perform multiple network calls using Retrofit library.
 -   **What is the role of Presenter in MVP?**<br/>
+    A) The Presenter is responsible to act as the middle man between View and Model. It retrieves data from the Model and returns it formatted to the View. But unlike the typical MVC, it also decides what happens when you interact with the View.
+
+-   **What is the advantage of MVVM over MVP?**<br/>
+    A) In MVP, Presenter is responsible for view data updates as well as data operations where as in MVVM, ViewModel does not hold any reference to View. It is the View's responsibility to pick the changes from ViewModel. This helps in writing more maintainable test cases since ViewModel does not depend upon View.
 
 -   **What is Pending Intent?**<br/>
     A)A PendingIntent is a token that you give to a foreign application (e.g. NotificationManager, AlarmManager, Home Screen AppWidgetManager, or other 3rd party applications), which allows the foreign application to use your application's permissions to execute a predefined piece of code. It specifies a task that requires to be performed in future.
