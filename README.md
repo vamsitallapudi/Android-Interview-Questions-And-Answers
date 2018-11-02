@@ -12,6 +12,15 @@
     a)Implicit Intent
     b)Explicit Intent
 
+-   **What is AAPT?**<br/>
+    A) AAPT2 (Android Asset Packaging Tool) is a build tool that Android Studio and Android Gradle Plugin use to compile and package your app’s resources. AAPT2 parses, indexes, and compiles the resources into a binary format that is optimized for the Android platform.
+
+-   **What are the different types of Intents?**<br/>
+    A) There are two types of intents:
+
+    Explicit intents specify which application will satisfy the intent, by supplying either the target app's package name or a fully-qualified component class name. You'll typically use an explicit intent to start a component in your own app, because you know the class name of the activity or service you want to start. For example, you might start a new activity within your app in response to a user action, or start a service to download a file in the background.
+    Implicit intents do not name a specific component, but instead declare a general action to perform, which allows a component from another app to handle it. For example, if you want to show the user a location on a map, you can use an implicit intent to request that another capable app show a specified location on a map.
+
 -   **How to Stop a Service?**<br/>
     A) To stop a service from an activity we can call stopService(Intent intent) method. To Stop a service from itself, we can call stopSelf() method.
 -   **What is a Service? What are different types of services?**<br/>
@@ -81,6 +90,11 @@
 
 -  **What is Alarm Manager?**<br/>
     A) AlarmManager is a class which helps scheduling your Application code to run at some point of time or at particular time intervals in future. When an alarm goes off, the Intent that had been registered for it is broadcast by the system, automatically starting the target application if it is not already running. Registered alarms are retained while the device is asleep (and can optionally wake the device up if they go off during that time), but will be cleared if it is turned off and rebooted.
+
+-   **How can I get continuous location updates in android like in Google Maps?**<br/>
+    A) We can use Fused location provider in Android set our interval in that.
+    https://stackoverflow.com/a/41500910/3424919
+
 
 ### Dagger 2 Related Questions:
 
