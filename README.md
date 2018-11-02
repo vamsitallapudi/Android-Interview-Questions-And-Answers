@@ -1,5 +1,8 @@
 # Android Interview Questions And Answers
 
+### Help fellow developers by contributing to these interview Questions - Create a pull request in [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
+
+
 -   **What is an Application class?**<br/>
     A) An Application class is a base class in your Application starts before all other classes like Activities or services are called. You can maintain your application's global state here. While it is NOT mandatory that you need to extend Application class, you can do so by providing your own implementation by creating a subclass and specifying the fully-qualified name of this subclass as the "android:name" attribute in your AndroidManifest.xml's <application> tag.
 
