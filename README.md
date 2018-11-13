@@ -31,6 +31,19 @@
     A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new thread or use an IntentService.
 
 -   **What are different types of services?**<br/>
+    A) There are two types of Services:Bound Service and Unbounded Service (or also called as Start Service).<br/>
+    **1) Bound Service:** A Service is said to Bound when an application component binds to it by calling bindService() method. A bound service offers client-server similar interface where the components can interact with service, send requests and get results and even can do so across processes with Inter Process Communication (IPC).
+    <br/>
+    **2) Unbounded Service (Start Service):**
+    A Service
+    <br/>
+    More Info: https://stackoverflow.com/a/25240537/3424919
+
+-   **Advantage of Retrofit over Volley?**<br/>
+
+-   **Advantage of Retrofit over AsyncTask?**<br/>
+
+-   **What are different launch modes available in Android?**<br/>
 
 
 
