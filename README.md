@@ -26,11 +26,30 @@
 
 -   **How to Stop a Service?**<br/>
     A) To stop a service from an activity we can call stopService(Intent intent) method. To Stop a service from itself, we can call stopSelf() method.
--   **What is a Service? What are different types of services?**<br/>
+
+-   **What is a Service?**<br/>
     A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new thread or use an IntentService.
+
+-   **What are different types of services?**<br/>
+    A) There are two types of Services:Bound Service and Unbounded Service (or also called as Start Service).<br/>
+    **1) Bound Service:** A Service is said to Bound when an application component binds to it by calling bindService() method. A bound service offers client-server similar interface where the components can interact with service, send requests and get results and even can do so across processes with Inter Process Communication (IPC).
+    <br/>
+    **2) Unbounded Service (Start Service):**
+    A Service
+    <br/>
+    More Info: https://stackoverflow.com/a/25240537/3424919
+
+-   **Advantage of Retrofit over Volley?**<br/>
+
+-   **Advantage of Retrofit over AsyncTask?**<br/>
+
+-   **What are different launch modes available in Android?**<br/>
+
+
 
 -   **What is an Intent Service?**<br/>
     A) IntentService is a Service that can perform tasks using worker thread unlike service that blocks main thread.
+
 -   **What is the method that differentiates it to make Service run in background?**<br/>
     A) onHandleIntent() is the method that helps the IntentService to run a particular code block declared inside it, in worker/background thread.
 
@@ -50,6 +69,7 @@
 
 -   **How to handle multiple network calls using Retrofit?**<br/>
       A) In Retrofit, we can call the operations asynchronously by using enqueue() method where as to call operations synchronously, we can use execute() method. In addition, we can use zip() operator from RxJava to perform multiple network calls using Retrofit library.
+
 -   **What is the role of Presenter in MVP?**<br/>
     A) The Presenter is responsible to act as the middle man between View and Model. It retrieves data from the Model and returns it formatted to the View. But unlike the typical MVC, it also decides what happens when you interact with the View.
 
@@ -74,7 +94,6 @@
 -    **When to use AsyncTask and when to use services?**<br/>
     A) Services are useful when you want to run code even when your application's Activity isn't open. AsyncTask is a helper class used to run some code in a separate thread and publish results in main thread. Usually AsyncTask is used for small operations and services are used for long running operations.
 
-
 -   **What is a Looper?**<br/>
     A) A Looper is a class used to loop through the Message Queue attached to the Thread. By default, a thread halts when the execution completes. But, for Example, if we take Android's Main thread, it should not halt upon execution.
     Rather it should loop through the runnables(Messages) that its assigned in order to work properly. For more info, refer to this [link](https://stackoverflow.com/a/34522758/3424919).
@@ -97,7 +116,6 @@
 -   **How can I get continuous location updates in android like in Google Maps?**<br/>
     A) We can use Fused location provider in Android set our interval in that.
     https://stackoverflow.com/a/41500910/3424919
-
 
 ### Dagger 2 Related Questions:
 
