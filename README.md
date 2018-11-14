@@ -32,18 +32,29 @@
 
 -   **What are different types of services?**<br/>
     A) There are two types of Services:Bound Service and Unbounded Service (or also called as Start Service).<br/>
-    **1) Bound Service:** A Service is said to Bound when an application component binds to it by calling bindService() method. A bound service offers client-server similar interface where the components can interact with service, send requests and get results and even can do so across processes with Inter Process Communication (IPC).
+    **1) Bound Service:** A Service is said to Bound when an application component binds to it by calling ***bindService()*** method. A bound service offers client-server similar interface where the components can interact with service, send requests and get results and even can do so across processes with Inter Process Communication (IPC).
     <br/>
     **2) Unbounded Service (Start Service):**
-    A Service
+    A Service is is said to be Started Service or Unbounded service if an application component, such as an activity or fragment, calls it by ***startService()*** function. Once started, the service can run in the background indefinitely even if the component that started it is destroyed.
     <br/>
     More Info: https://stackoverflow.com/a/25240537/3424919
 
 -   **Advantage of Retrofit over Volley?**<br/>
+    A) Retrofit is type-safe. Type safety means that the compiler will validate types while compiling, and throw an error if you try to assign the wrong type to a variable.
 
--   **Advantage of Retrofit over AsyncTask?**<br/>
+-   **Advantage of Volley over Retrofit?**<br/>
+    A) Android Volley has a very elaborate and flexible cache mechanism. When a request is made through Volley, first the cache is checked for Response. If it is found, then it is fetched and parsed, else, it will hit Network to fetch the data. Retrofit does not support cache by default.
 
 -   **What are different launch modes available in Android?**<br/>
+    A) There are four launch modes for an Activity in Android as follows:
+
+    1) standard : create a new instance of an activity every single time. It is the default mode if not declared.
+
+    2) single top : same as standard except that if the activity is at the top of the stack, then the same instance will be used.
+
+    3) single task : a new task will be created whenever this activity is created. Also only one instance will be available among all the tasks.
+
+    4) single instance : the activity will be created in a new task, and that task will contain only that activity. Also only 1 instance of that activity will be available for all the tasks.
 
 
 
