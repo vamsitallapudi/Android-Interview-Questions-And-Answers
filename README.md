@@ -28,7 +28,7 @@
     A) To stop a service from an activity we can call stopService(Intent intent) method. To Stop a service from itself, we can call stopSelf() method.
 
 -   **What is a Service?**<br/>
-    A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new thread or use an IntentService.
+    A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new thread or use an IntentService that can do work in background.
 
 -   **What are different types of services?**<br/>
     A) There are two types of Services:Bound Service and Unbounded Service (or also called as Start Service).<br/>
@@ -38,6 +38,18 @@
     A Service is is said to be Started Service or Unbounded service if an application component, such as an activity or fragment, calls it by ***startService()*** function. Once started, the service can run in the background indefinitely even if the component that started it is destroyed.
     <br/>
     More Info: https://stackoverflow.com/a/25240537/3424919
+
+-   **What is an Intent Service?**<br/>
+    A) IntentService is a Service that can perform tasks using worker thread unlike service that blocks main thread.
+
+-   **What is the method that differentiates it to make Service run in background?**<br/>
+    A) onHandleIntent() is the method that helps the IntentService to run a particular code block declared inside it, in worker/background thread.
+
+-   **How to Stop an IntentService?**<br/>
+    A) An IntentService automatically stops itself after its job is done. We do not need to explicitly call any methods to stop an IntentService unlike Service which requires stopSelf() or StopService(intent:Intent).
+
+-   **When Intent Service is Useful?**<br/>
+    A) The IntentService can be used in long tasks usually with no communication to Main Thread. If communication is required, can use Main Thread handler or broadcast intents. Another case of use is when callbacks are needed (Intent triggered tasks).
 
 -   **Advantage of Retrofit over Volley?**<br/>
     A) Retrofit is type-safe. Type safety means that the compiler will validate types while compiling, and throw an error if you try to assign the wrong type to a variable.
@@ -55,20 +67,6 @@
     3) single task : a new task will be created whenever this activity is created. Also only one instance will be available among all the tasks.
 
     4) single instance : the activity will be created in a new task, and that task will contain only that activity. Also only 1 instance of that activity will be available for all the tasks.
-
-
-
--   **What is an Intent Service?**<br/>
-    A) IntentService is a Service that can perform tasks using worker thread unlike service that blocks main thread.
-
--   **What is the method that differentiates it to make Service run in background?**<br/>
-    A) onHandleIntent() is the method that helps the IntentService to run a particular code block declared inside it, in worker/background thread.
-
--   **How to Stop an IntentService?**<br/>
-    A) An IntentService automatically stops itself after its job is done. We do not need to explicitly call any methods to stop an IntentService unlike Service which requires stopSelf() or StopService(intent:Intent).
-
--   **When Intent Service is Useful?**<br/>
-    A) The IntentService can be used in long tasks usually with no communication to Main Thread. If communication is required, can use Main Thread handler or broadcast intents. Another case of use is when callbacks are needed (Intent triggered tasks).
 
 -   **How to handle crashing of AsyncTask during screen rotation?**<br/>
     A) The best way to handle AsyncTask crash is to create a RetainFragment, i.e., a fragment without UI as shown in the gist below: https://gist.github.com/vamsitallapudi/26030c15829d7be8118e42b1fcd0fa42
