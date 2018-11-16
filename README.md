@@ -149,6 +149,9 @@
     A) We are often in a situation where we will be needing multiple objects with different instance values. For example, we need declare Student("Vamsi") and Student("Krishna"). In such case we can use a Qualifier to tell Dagger that we need multiple instances of same class. The default implementation of Qualifier is using @Named annotation, for eg., @Named("student_vamsi") and @Named("student_krishna")
     If we want to create a Custom Qualifier we would be using @Qualifier to declare a custom Qualifier interface.
 
+-   **What is the use-case of @Inject Annotation in Dagger?**<br/>
+    A) @Inject annotation is used to request dagger to provide the respective Object. We use @Inject on Constructor, Fields (mostly where constructor is not accessible like Activities, Fragments, etc.) and Methods.
+
 ### RxJava Related Questions:
 
 -   **What is single in RXJava2?**<br/>
