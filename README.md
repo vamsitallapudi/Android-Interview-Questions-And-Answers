@@ -1,6 +1,6 @@
 # Android Interview Questions And Answers
 
-### Help fellow developers by contributing to these interview Questions - Create a pull request in [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
+### Curated List of Real-time Android Interview Questions. Help fellow developers by contributing to these interview Questions - Create a pull request in  [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
 
 
 -   **What is an Application class?**<br/>
@@ -132,13 +132,16 @@
     A)
 
 -   **What is the use-case of @Module Annotation?**<br/>
-    A)
+    A) @Module is the Annotation used on the class for the Dagger to look inside it, to provide dependencies. We may be declaring methods inside the module class that are enclosed with @Provides annotation.
+
+-   **What is the use-case of @Provides Annotation?**<br/>
+    A) @Provides annotation is used on a method in Module class and can return / provide a Dependency object.
 
 -   **What is the use-case of @Component Annotation?**<br/>
-    A)
+    A) @Component is used on Interface or abstract class. Dagger uses this interface to generate an implementation class with fully formed, dependency injected implementation, using the modules declared along with it. This generated class will be preceded by Dagger. For example if i create an interface named ProgramComponent with @Component annotation, Dagger will generate a Class named 'DaggerProgramComponent' implementing the  ProgramComponent interface.
 
 -   **What is the use-case of @Scope Annotation?**<br/>
-    A)
+    A) @Scope is an annotation used on Interface to create a new Custom Scope. A Scope declaration helps to keep single instance of a class as long as its scope exists. For example, in Android, we can use @ApplicationScope for the object to live as long as the Application is live or @ActivityScope for the object to be available till the activity is killed.
 
 -   **What is the use-case of @Qualifier Annotation?**<br/>
     A)
