@@ -2,6 +2,16 @@
 
 ### Curated List of Real-time Android Interview Questions. Help fellow developers by contributing to these interview Questions - Create a pull request in  [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
 
+-   **Android Architecture**<br/>
+    A) <br/>
+    ![Android Architecture Image](/assets/android-architecture.png)
+
+-   **What are Android Components?**<br/>
+    A) 1) Activities,
+    2) Intent and broadcast receivers,
+    3) Services,
+    4) Content Providers,
+    5) Widgets and Notifications
 
 -   **What is an Application class?**<br/>
     A) An Application class is a base class in your Application starts before all other classes like Activities or services are called. You can maintain your application's global state here. While it is NOT mandatory that you need to extend Application class, you can do so by providing your own implementation by creating a subclass and specifying the fully-qualified name of this subclass as the "android:name" attribute in your AndroidManifest.xml's <application> tag.
@@ -9,6 +19,22 @@
 -   **What is a Context? What are different types of Contexts?**<br/>
     A) As the name says, its the context of the current application or object. Context is like a handle to the environment your application is currently running in.
     We mainly use two types of context. Application context - whose scope is throughout the application and Activity Context - whose scope depends on the Activity Lifecycle.
+
+-   **What is an Activity?**<br/>
+    A) An activity provides the window in which the app draws its UI. This window typically fills the screen, but may be smaller than the screen and float on top of other windows. Generally, one activity implements one screen in an app. For instance, one of an app’s activities may implement a Preferences screen, while another activity implements a Select Photo screen.
+
+-   **What is an Intent Filter?**<br/>
+    A) Intent filters are a very powerful feature of the Android platform. They provide the ability to launch an activity based not only on an explicit request, but also an implicit one. For example, an explicit request might tell the system to “Start the Send Email activity in the Gmail app". By contrast, an implicit request tells the system to “Start a Send Email screen in any activity that can do the job." When the system UI asks a user which app to use in performing a task, that’s an intent filter at work. Here's an example of how to declare Intent Filter in AndroidManifest:
+    ```xml
+    <activity android:name=".ExampleActivity" android:icon="@drawable/app_icon">
+      <intent-filter>
+          <action android:name="android.intent.action.SEND" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <data android:mimeType="text/plain" />
+      </intent-filter>
+    </activity>
+    ```
+
 
 -   **What is an Intent?**<br/>
     A) It is a kind of message or information that is passed to the components. It is used to launch an activity, display a web page, send SMS, send email, etc. There are two types of intents in android:
@@ -38,6 +64,9 @@
     A Service is is said to be Started Service or Unbounded service if an application component, such as an activity or fragment, calls it by ***startService()*** function. Once started, the service can run in the background indefinitely even if the component that started it is destroyed.
     <br/>
     More Info: https://stackoverflow.com/a/25240537/3424919
+
+-   **When does a Bound Service stops?**<br/>
+    A)
 
 -   **What is an Intent Service?**<br/>
     A) IntentService is a Service that can perform tasks using worker thread unlike service that blocks main thread.
@@ -154,9 +183,79 @@
 
 ### RxJava Related Questions:
 
--   **What is single in RXJava2?**<br/>
-    A) A single in RXJava2 is an Observable which emits only one item if completed or returns error.
+More additional info to get started with RxJava is available at:
+[Getting Started with RxJava2](https://www.coderefer.com/rxandroid-tutorial-getting-started/)
 
--   **What is Completable in RXJava2?** <br/>
-    A) A Completable in RXJava2 is an Observable which just completes the task and does not emit anything if completed. It returns an error if anything fails.
+-   **What is an Observable in RXJava2?**<br/>
+    A) An Observable  simply emits the data to those which subscribed to it. All the emission is done asynchronously to the subscribers. A simple Observable can be created as follows:
+
+    ```java
+    // RxAndroid Tutorial - Adding Observable
+    Observable<String> stringObservable = Observable.just("Hello Reactive Programming!");
+    ```
+-   **What is an Observer in RXJava2?**<br/>
+    A) Observer consumes the data emitted by the Observable. To do this, Observer needs to subscribe to the Observable. Example shows how to create an Observable in RxJava2.
+    ```java
+    // RxAndroid Tutorial - Adding observer
+    Observer<String> stringObserver = new Observer<String>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+            }
+
+            @Override
+            public void onNext(String s) {
+                Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+            }
+
+            @Override
+            public void onComplete() {
+            }
+        };
+    ```
+
+-   **How to Subscribe / Unsubscribe in RXJava?**<br/>
+    A) We can make an Observer to subscribe to Observable as follows:
+    ```java
+    // RxAndroid tutorial - observer subscribing to observable
+    stringObservable.subscribe(stringObserver);
+    ```
+
+-   **What are the different types of Observables in RxJava?**<br/>
+    A)
+    1) single
+    2) Maybe
+    3) Completable
+    4) Observable
+    5) Flowable
+
+-   **What is a Single in RxJava?**<br/>
+    A) A Single in RxJava is an Observable which emits only one item if completed or returns error.
+
+-   **What is Maybe in RxJava?** <br/>
+    A) A Maybe in RxJava is used when the Observable needs to emit a value or a no value or an error.
+
+-   **What is Completable in RxJava?** <br/>
+    A) A Completable in RxJava is an Observable which just completes the task and does not emit anything if completed. It returns an error if anything fails.
     It is similar to reactive concept of runnable.
+
+-   **What is Back Pressure in RxJava?**<br/>
+    A) Back Pressure is the state where your observable (publisher) is creating more events than your subscriber can handle.
+
+-   **What is Flowable in RxJava?** <br/>
+    A) A Flowable in RxJava is used when the Observable emits more data than the Observer can consume. In Other words, Flowable can handle back pressure where as an Observable cannot.
+
+-   **What is a Cold Observable?**<br/>
+    A) A Cold Observable is an Observable that does not emit items until a Subscriber subscribes. If we have more than one Subscriber, then the Cold Observable will emit each sequence of items to all Subscribers one by one.
+
+-   **What is a Hot Observable?**<br/>
+    A) A Hot observable is an Observer that will emit items
+
+-   **Hot Observables vs Cold Observables**<br/>
+
+
+
+-   **Explain about reactive programming?**<br/>
