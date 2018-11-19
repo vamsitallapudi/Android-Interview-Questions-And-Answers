@@ -75,13 +75,13 @@
 -   **What is an Intent Service?**<br/>
     A) IntentService is a Service that can perform tasks using worker thread unlike service that blocks main thread.
 
--   What is the difference between START_NOT_STICKY, START_STICKY AND START_REDELIVER_INTENT?
+-   **What is the difference between START_NOT_STICKY, START_STICKY AND START_REDELIVER_INTENT?**<br/>
     A) **START_NOT_STICKY:**<br/>
     If the system kills the service after onStartCommand() returns, do not recreate the service unless there are pending intents to deliver. This is the safest option to avoid running your service when not necessary and when your application can simply restart any unfinished jobs.<br/>
     **START_STICKY:**<br/>
     If the system kills the service after onStartCommand() returns, recreate the service and call onStartCommand(), but do not redeliver the last intent. Instead, the system calls onStartCommand() with a null intent unless there are pending intents to start the service. In that case, those intents are delivered. This is suitable for media players (or similar services) that are not executing commands but are running indefinitely and waiting for a job.<br/>
     **START_REDELIVER_INTENT:**<br/>
-    If the system kills the service after onStartCommand() returns, recreate the service and call onStartCommand() with the last intent that was delivered to the service. Any pending intents are delivered in turn. This is <i>suitable for services that are actively performing a job that should be immediately resumed, such as downloading a file.<i/>
+    If the system kills the service after onStartCommand() returns, recreate the service and call onStartCommand() with the last intent that was delivered to the service. Any pending intents are delivered in turn. This is *suitable for services that are actively performing a job that should be immediately resumed, such as downloading a file.*
 
 -   **What is the method that differentiates it to make Service run in background?**<br/>
     A) onHandleIntent() is the method that helps the IntentService to run a particular code block declared inside it, in worker/background thread.
