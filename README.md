@@ -50,26 +50,38 @@
     Explicit intents specify which application will satisfy the intent, by supplying either the target app's package name or a fully-qualified component class name. You'll typically use an explicit intent to start a component in your own app, because you know the class name of the activity or service you want to start. For example, you might start a new activity within your app in response to a user action, or start a service to download a file in the background.
     Implicit intents do not name a specific component, but instead declare a general action to perform, which allows a component from another app to handle it. For example, if you want to show the user a location on a map, you can use an implicit intent to request that another capable app show a specified location on a map.
 
--   **How to Stop a Service?**<br/>
-    A) To stop a service from an activity we can call stopService(Intent intent) method. To Stop a service from itself, we can call stopSelf() method.
+-   **What is HandlerThread?**<br/>
+    A) HandlerThread is a Handy class to start a thread that has a Looper.
 
 -   **What is a Service?**<br/>
     A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new thread or use an IntentService that can do work in background.
 
+-   **How to Stop a Service?**<br/>
+    A) To stop a service from an activity we can call stopService(Intent intent) method. To Stop a service from itself, we can call stopSelf() method.
+
 -   **What are different types of services?**<br/>
-    A) There are two types of Services:Bound Service and Unbounded Service (or also called as Start Service).<br/>
-    **1) Bound Service:** A Service is said to Bound when an application component binds to it by calling ***bindService()*** method. A bound service offers client-server similar interface where the components can interact with service, send requests and get results and even can do so across processes with Inter Process Communication (IPC).
-    <br/>
-    **2) Unbounded Service (Start Service):**
-    A Service is is said to be Started Service or Unbounded service if an application component, such as an activity or fragment, calls it by ***startService()*** function. Once started, the service can run in the background indefinitely even if the component that started it is destroyed.
-    <br/>
-    More Info: https://stackoverflow.com/a/25240537/3424919
+    A) These are the three different types of services:
+
+    **Foreground Service:**
+    A foreground service performs some operation that is noticeable to the user. For example, an audio app would use a foreground service to play an audio track. Foreground services must display a Notification. Foreground services continue running even when the user isn't interacting with the app. <br/>
+    **Background Service:**
+    A background service performs an operation that isn't directly noticed by the user. For example, if an app used a service to compact its storage, that would usually be a background service.<br/>
+    **Bound Service:**
+    A service is bound when an application component binds to it by calling bindService(). A bound service offers a client-server interface that allows components to interact with the service, send requests, receive results, and even do so across processes with interprocess communication (IPC). A bound service runs only as long as another application component is bound to it. Multiple components can bind to the service at once, but when all of them unbind, the service is destroyed by the system.
 
 -   **When does a Bound Service stops?**<br/>
-    A)
+    A) A Bound Service will stop automatically by the system when all the Application Components bound to it are unbinded.
 
 -   **What is an Intent Service?**<br/>
     A) IntentService is a Service that can perform tasks using worker thread unlike service that blocks main thread.
+
+-   What is the difference between START_NOT_STICKY, START_STICKY AND START_REDELIVER_INTENT?
+    A) **START_NOT_STICKY:**<br/>
+    If the system kills the service after onStartCommand() returns, do not recreate the service unless there are pending intents to deliver. This is the safest option to avoid running your service when not necessary and when your application can simply restart any unfinished jobs.<br/>
+    **START_STICKY:**<br/>
+    If the system kills the service after onStartCommand() returns, recreate the service and call onStartCommand(), but do not redeliver the last intent. Instead, the system calls onStartCommand() with a null intent unless there are pending intents to start the service. In that case, those intents are delivered. This is suitable for media players (or similar services) that are not executing commands but are running indefinitely and waiting for a job.<br/>
+    **START_REDELIVER_INTENT:**<br/>
+    If the system kills the service after onStartCommand() returns, recreate the service and call onStartCommand() with the last intent that was delivered to the service. Any pending intents are delivered in turn. This is <i>suitable for services that are actively performing a job that should be immediately resumed, such as downloading a file.<i/>
 
 -   **What is the method that differentiates it to make Service run in background?**<br/>
     A) onHandleIntent() is the method that helps the IntentService to run a particular code block declared inside it, in worker/background thread.
@@ -225,8 +237,7 @@ More additional info to get started with RxJava is available at:
     ```
 
 -   **What are the different types of Observables in RxJava?**<br/>
-    A)
-    1) single
+    A)1) single
     2) Maybe
     3) Completable
     4) Observable
