@@ -2,6 +2,10 @@
 
 ### Curated List of Real-time Android Interview Questions. Help fellow developers by contributing to these interview Questions - Create a pull request in  [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
 
+For Kotlin Interview Questions, [Click Here] 
+
+## Android Interview Questions
+
 -   **Android Architecture**<br/>
     A) <br/>
     ![Android Architecture Image](/assets/android-architecture.png)
@@ -54,7 +58,7 @@
     A) HandlerThread is a Handy class to start a thread that has a Looper.
 
 -   **What is a Service?**<br/>
-    A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new thread or use an IntentService that can do work in background.
+    A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new background thread or use an IntentService that can do work in background.
 
 -   **How to Stop a Service?**<br/>
     A) To stop a service from an activity we can call stopService(Intent intent) method. To Stop a service from itself, we can call stopSelf() method.
@@ -69,6 +73,10 @@
     **Bound Service:**
     A service is bound when an application component binds to it by calling bindService(). A bound service offers a client-server interface that allows components to interact with the service, send requests, receive results, and even do so across processes with interprocess communication (IPC). A bound service runs only as long as another application component is bound to it. Multiple components can bind to the service at once, but when all of them unbind, the service is destroyed by the system.
 
+-   **Bound Service vs UnBounded service?**<br/>
+    A) A Bound service is started by using method bindService(). As mentioned above system destroys bound service when no application component is accessing it.
+    Unbounded service (started service) is started by using a method called startService(). Once started, it will run indefinitely even if the application component that started it is destroyed.
+    
 -   **When does a Bound Service stops?**<br/>
     A) A Bound Service will stop automatically by the system when all the Application Components bound to it are unbinded.
 
