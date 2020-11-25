@@ -161,7 +161,7 @@ Quick Jump to Topics:
     A) Services are useful when you want to run code even when your application's Activity isn't open. AsyncTask is a helper class used to run some code in a separate thread and publish results in main thread. Usually AsyncTask is used for small operations and services are used for long running operations.
 
 -    **When to use a service and when to use a thread?**<br/>
-    A) 
+    A) We will use a Thread when we want to perform background operations when application is running in foreground. We will use a service even when the application is not running.
 
 -   **What is a Handler?**<br/>
     A) A Handler allows you to send and process Message and Runnable objects associated with a thread's MessageQueue. Each Handler instance is associated with a single thread and that thread's message queue. When you create a new Handler, it is bound to the thread / message queue of the thread that is creating it -- from that point on, it will deliver messages and runnables to that message queue and execute them as they come out of the message queue.
