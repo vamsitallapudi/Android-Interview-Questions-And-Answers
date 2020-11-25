@@ -2,9 +2,12 @@
 
 ### Curated List of Real-time Android Interview Questions. Help fellow developers by contributing to these interview Questions - Create a pull request in  [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
 
-For Kotlin Interview Questions, [Click Here] 
+Quick Jump to Topics:
+ * [Core Android](#core-android)
+ * [Dagger](#dagger-2-related-questions)
+ * [RxJava](#rxjava-related-questions)
 
-## Android Interview Questions
+### Core Android
 
 -   **Android Architecture**<br/>
     A) <br/>
@@ -57,8 +60,12 @@ For Kotlin Interview Questions, [Click Here]
 -   **What is HandlerThread?**<br/>
     A) HandlerThread is a Handy class to start a thread that has a Looper.
 
+-   **What is a Looper?**<br/>
+    A) A Looper is a class used to loop through the Message Queue attached to the Thread. By default, a thread halts when the execution completes. But, for Example, if we take Android's Main thread, it should not halt upon execution.
+    Rather it should loop through the runnables(Messages) that its assigned in order to work properly. For more info, refer to this [link](https://stackoverflow.com/a/34522758/3424919).
+
 -   **What is a Service?**<br/>
-    A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new background thread or use an IntentService that can do work in background.
+    A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new background thread or use an IntentService that can do work in background. [Read More.](https://developer.android.com/guide/components/services)
 
 -   **How to Stop a Service?**<br/>
     A) To stop a service from an activity we can call stopService(Intent intent) method. To Stop a service from itself, we can call stopSelf() method.
@@ -72,11 +79,12 @@ For Kotlin Interview Questions, [Click Here]
     A background service performs an operation that isn't directly noticed by the user. For example, if an app used a service to compact its storage, that would usually be a background service.<br/>
     **Bound Service:**
     A service is bound when an application component binds to it by calling bindService(). A bound service offers a client-server interface that allows components to interact with the service, send requests, receive results, and even do so across processes with interprocess communication (IPC). A bound service runs only as long as another application component is bound to it. Multiple components can bind to the service at once, but when all of them unbind, the service is destroyed by the system.
+    [Read More](https://developer.android.com/guide/components/services#Types-of-services)
 
 -   **Bound Service vs UnBounded service?**<br/>
     A) A Bound service is started by using method bindService(). As mentioned above system destroys bound service when no application component is accessing it.
     Unbounded service (started service) is started by using a method called startService(). Once started, it will run indefinitely even if the application component that started it is destroyed.
-    
+
 -   **When does a Bound Service stops?**<br/>
     A) A Bound Service will stop automatically by the system when all the Application Components bound to it are unbinded.
 
@@ -90,6 +98,9 @@ For Kotlin Interview Questions, [Click Here]
     If the system kills the service after onStartCommand() returns, recreate the service and call onStartCommand(), but do not redeliver the last intent. Instead, the system calls onStartCommand() with a null intent unless there are pending intents to start the service. In that case, those intents are delivered. This is suitable for media players (or similar services) that are not executing commands but are running indefinitely and waiting for a job.<br/>
     **START_REDELIVER_INTENT:**<br/>
     If the system kills the service after onStartCommand() returns, recreate the service and call onStartCommand() with the last intent that was delivered to the service. Any pending intents are delivered in turn. This is *suitable for services that are actively performing a job that should be immediately resumed, such as downloading a file.*
+
+-   **What is Pending Intent?**<br/>
+    A)A PendingIntent is a token that you give to a foreign application (e.g. NotificationManager, AlarmManager, Home Screen AppWidgetManager, or other 3rd party applications), which allows the foreign application to use your application's permissions to execute a predefined piece of code. It specifies a task that requires to be performed in future.
 
 -   **What is the method that differentiates it to make Service run in background?**<br/>
     A) onHandleIntent() is the method that helps the IntentService to run a particular code block declared inside it, in worker/background thread.
@@ -134,9 +145,6 @@ For Kotlin Interview Questions, [Click Here]
 -   **What is the advantage of MVVM over MVP?**<br/>
     A) In MVP, Presenter is responsible for view data updates as well as data operations where as in MVVM, ViewModel does not hold any reference to View. It is the View's responsibility to pick the changes from ViewModel. This helps in writing more maintainable test cases since ViewModel does not depend upon View.
 
--   **What is Pending Intent?**<br/>
-    A)A PendingIntent is a token that you give to a foreign application (e.g. NotificationManager, AlarmManager, Home Screen AppWidgetManager, or other 3rd party applications), which allows the foreign application to use your application's permissions to execute a predefined piece of code. It specifies a task that requires to be performed in future.
-
 -   **Activity Lifecycle**<br/>
     A)<br/>
     ![Activity Lifecycle Image](/assets/activity_lifecycle.png)
@@ -152,9 +160,8 @@ For Kotlin Interview Questions, [Click Here]
 -    **When to use AsyncTask and when to use services?**<br/>
     A) Services are useful when you want to run code even when your application's Activity isn't open. AsyncTask is a helper class used to run some code in a separate thread and publish results in main thread. Usually AsyncTask is used for small operations and services are used for long running operations.
 
--   **What is a Looper?**<br/>
-    A) A Looper is a class used to loop through the Message Queue attached to the Thread. By default, a thread halts when the execution completes. But, for Example, if we take Android's Main thread, it should not halt upon execution.
-    Rather it should loop through the runnables(Messages) that its assigned in order to work properly. For more info, refer to this [link](https://stackoverflow.com/a/34522758/3424919).
+-    **When to use a service and when to use a thread?**<br/>
+    A) 
 
 -   **What is a Handler?**<br/>
     A) A Handler allows you to send and process Message and Runnable objects associated with a thread's MessageQueue. Each Handler instance is associated with a single thread and that thread's message queue. When you create a new Handler, it is bound to the thread / message queue of the thread that is creating it -- from that point on, it will deliver messages and runnables to that message queue and execute them as they come out of the message queue.
