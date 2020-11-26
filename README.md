@@ -133,11 +133,10 @@ Quick Jump to Topics:
      <br/>Eg: If we have an activity stack of A->B->C, If we launch Activity C again using singleTop Mode, the activity stack remains to be A->B->C. However if we launch B, then B will be added as new Instance to the stack (A->B->C->B).
 
     3) <b>singleTask</b> : A new task will be created and activity will be created at the root of this new task whenever we use launch mode as singleTask. However, if there is already a separate task with same instance, the system will call that activity's onNewIntent() method to route the intent. There can only be one instance of activity existing at a time.
-    <br/>Eg: If our activity stack is A->B->C and if we launch D using singleTask, it will be A->B->C->[D]. Here braces represents the stack in separate stack. If we call E using standard mode, then it will be A->B->C->[D->E].
-    <br/>
-    <em>If we have A->B->C and if we call B again using singleTask launch Mode, the stack will now be A->B with B in a separate task. Activity C will be destroyed.</em>
+    <br/>Eg: If our activity stack is A->B->C and if we launch D using singleTask, it will be A->B->C->[D]. Here braces represents the stack in separate stack. If we call E using standard mode, then it will be A->B->C->[D->E].<br/>
+    If we have A->B->C and if we call B again using singleTask launch Mode, the stack will now be A->B with B in a separate task. Activity C will be destroyed.
 
-    4) <b>singleInstance</b> : the activity will be created in a new task, and that task will contain only that activity. Also only one instance of that activity will be available for all the tasks.
+    1) <b>singleInstance</b> : the activity will be created in a new task, and that task will contain only that activity. Also only one instance of that activity will be available for all the tasks.
     <br/>Eg: if the Activity stack is A->B and now we launched C using singleInstance Launch Mode, the new stack will be A->B->[C]. Now if we launch D from activity B, Then new stack will be A->B->D [C]. If we call C again, onNewIntent() of C will be called and new stack will be A->B->D->[C].
 
     You can read more about them [here](https://developer.android.com/guide/components/activities/tasks-and-back-stack#ManifestForTasks).
