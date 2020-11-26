@@ -82,7 +82,7 @@ Quick Jump to Topics:
     **Foreground Service:**
     A foreground service performs some operation that is noticeable to the user. For example, an audio app would use a foreground service to play an audio track. Foreground services must display a Notification. Foreground services continue running even when the user isn't interacting with the app. <br/>
     **Background Service:**
-    A background service performs an operation that isn't directly noticed by the user. For example, if an app used a service to compact its storage, that would usually be a background service.<br/>
+    A background service performs an operation that isn't directly noticed by the user. For example, if an app used a service to compact its storage, that would usually be a background service. However there are restrictions to use background services from Android API 26 and above. We can use WorkManager to defer these background tasks.<br/>
     **Bound Service:**
     A service is bound when an application component binds to it by calling bindService(). A bound service offers a client-server interface that allows components to interact with the service, send requests, receive results, and even do so across processes with interprocess communication (IPC). A bound service runs only as long as another application component is bound to it. Multiple components can bind to the service at once, but when all of them unbind, the service is destroyed by the system.
     [Read More](https://developer.android.com/guide/components/services#Types-of-services)
@@ -144,6 +144,13 @@ Quick Jump to Topics:
 -   **How to handle crashing of AsyncTask during screen rotation?**<br/>
     A) The best way to handle AsyncTask crash is to create a RetainFragment, i.e., a fragment without UI as shown in the gist below: https://gist.github.com/vamsitallapudi/26030c15829d7be8118e42b1fcd0fa42
     We can also avoid this crash by using RxJava instead of AsyncTask as we will be subscribing and unsubscribing at onResume() and onPause() methods respectively.
+
+-  **How to reduce your app size?**
+    1. setting minifyEnabled to true
+    2. setting shrinkResources to true
+    3. using bundle instead of apk in developer console
+    4. converting the images to vector drawables.
+
 -   **What is the advantage of using Retrofit over AsyncTask?**<br/>
     A) Retrofit reduces boiler plate code by internally using GSON library which helps parsing the json file automatically.
     Retrofit is a type safe library. This means - it checks if wrong data type is assigned to variables at compilation time itself.
@@ -177,7 +184,7 @@ Quick Jump to Topics:
     A) We will use a Thread when we want to perform background operations when application is running in foreground. We will use a service even when the application is not running.
 
 -   **What is a Handler?**<br/>
-    A) A Handler allows you to send and process Message and Runnable objects associated with a thread's MessageQueue. Each Handler instance is associated with a single thread and that thread's message queue. When you create a new Handler, it is bound to the thread / message queue of the thread that is creating it -- from that point on, it will deliver messages and runnables to that message queue and execute them as they come out of the message queue.
+    A) A Handler allows you to send and process Message and Runnable objects associated with a thread's MessageQueue. Each Handler instance is associated with a single thread and that thread's message queue. When you create a new Handler, it is bound to the thread / message queue of the thread that is creating it -- from that point on, it will deliver messages and runnables to that message queue and execute them as they come out of the message queue. We will generally use handler class when we want to repeat task every few seconds.
 
 -   **How to save password safely in Android?**<br/>
     A) Using Android Keystore<br/>
