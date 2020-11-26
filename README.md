@@ -30,6 +30,12 @@ Quick Jump to Topics:
 -   **What is an Activity?**<br/>
     A) An activity provides the window in which the app draws its UI. This window typically fills the screen, but may be smaller than the screen and float on top of other windows. Generally, one activity implements one screen in an app. For instance, one of an app’s activities may implement a Preferences screen, while another activity implements a Select Photo screen.
 
+-   **Is there any scenario where onDestoy() will be called without calling onPause() and onStop()?**<br/>
+    A) If we call finish() method inside onCreate() of our Activity, then onDestroy() will be called directly.
+
+-   **How do we save and restore an activity's state during screen screen rotation?**<br/>
+    A) We can use onSavedInstanceState(bundle:Bundle) to save the activity's state inside a bundle. Then we can use onRestoreInstanceState(bundle) to restore the state of activity. However with Modern Android Development(MAD), we can use ViewModel to achieve the same and it is the recommended approach.
+
 -   **What is an Intent Filter?**<br/>
     A) Intent filters are a very powerful feature of the Android platform. They provide the ability to launch an activity based not only on an explicit request, but also an implicit one. For example, an explicit request might tell the system to “Start the Send Email activity in the Gmail app". By contrast, an implicit request tells the system to “Start a Send Email screen in any activity that can do the job." When the system UI asks a user which app to use in performing a task, that’s an intent filter at work. Here's an example of how to declare Intent Filter in AndroidManifest:
     ```xml
