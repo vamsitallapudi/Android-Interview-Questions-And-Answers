@@ -126,13 +126,21 @@ Quick Jump to Topics:
 -   **What are different launch modes available in Android?**<br/>
     A) There are four launch modes for an Activity in Android as follows:
 
-    1) standard : create a new instance of an activity every single time. It is the default mode if not declared.
+    1) <b>standard</b> : Creates a new instance of an activity in the task from which it is started every single time. It is the default mode if not declared. 
+    <br/>Eg: If we have an activity stack of A->B->C, If we launch Activity C again using standard Mode, the activity stack will now be A->B->C->C. We can see that two instances of C are present in the activity stack.
 
-    2) single top : same as standard except that if the activity is at the top of the stack, then the same instance will be used.
+    2) <b>singleTop</b> : Same as standard except that if the activity is at the top of the stack, then the same instance will be used. Now the existing Activity at the top will receive the intent through a call to its onNewIntent() method.
+     <br/>Eg: If we have an activity stack of A->B->C, If we launch Activity C again using singleTop Mode, the activity stack remains to be A->B->C. However if we launch B, then B will be added as new Instance to the stack (A->B->C->B).
 
-    3) single task : a new task will be created whenever this activity is created. Also only one instance will be available among all the tasks.
+    3) <b>singleTask</b> : A new task will be created and activity will be created at the root of this new task whenever we use launch mode as singleTask. However, if there is already a separate task with same instance, the system will call that activity's onNewIntent() method to route the intent. There can only be one instance of activity existing at a time.
+    <br/>Eg: If our activity stack is A->B->C and if we launch D using singleTask, it will be A->B->C->[D]. Here braces represents the stack in separate stack. If we call E using standard mode, then it will be A->B->C->[D->E].
+    <br/>
+    <em>If we have A->B->C and if we call B again using singleTask launch Mode, the stack will now be A->B with B in a separate task. Activity C will be destroyed.</em>
 
-    4) single instance : the activity will be created in a new task, and that task will contain only that activity. Also only 1 instance of that activity will be available for all the tasks.
+    4) <b>singleInstance</b> : the activity will be created in a new task, and that task will contain only that activity. Also only one instance of that activity will be available for all the tasks.
+    <br/>Eg: if the Activity stack is A->B and now we launched C using singleInstance Launch Mode, the new stack will be A->B->[C]. Now if we launch D from activity B, Then new stack will be A->B->D [C]. If we call C again, onNewIntent() of C will be called and new stack will be A->B->D->[C].
+
+    You can read more about them [here](https://developer.android.com/guide/components/activities/tasks-and-back-stack#ManifestForTasks).
 
 -   **How to handle crashing of AsyncTask during screen rotation?**<br/>
     A) The best way to handle AsyncTask crash is to create a RetainFragment, i.e., a fragment without UI as shown in the gist below: https://gist.github.com/vamsitallapudi/26030c15829d7be8118e42b1fcd0fa42
