@@ -30,6 +30,23 @@ Quick Jump to Topics:
 -   **What is an Activity?**<br/>
     A) An activity provides the window in which the app draws its UI. This window typically fills the screen, but may be smaller than the screen and float on top of other windows. Generally, one activity implements one screen in an app. For instance, one of an app’s activities may implement a Preferences screen, while another activity implements a Select Photo screen.
 
+-   **Activity Lifecycle**<br/>
+    A)<br/>
+    ![Activity Lifecycle Image](/assets/activity_lifecycle.png)
+
+-   **Fragment Lifecycle**<br/>
+    A)<br/>
+    ![Fragment Lifecycle Image](/assets/fragment_lifecycle.png)
+
+-   **Service Lifecycle**<br/>
+    A)<br/>
+    ![Fragment Lifecycle Image](/assets/service_lifecycle.png)
+
+-   **What is the correlation between activity and fragment life cycle?**<br/>
+-   A) <br/>
+    Here is how Activity's and Fragment's lifecyle are called together:
+    [Activity Fragment Lifecycle](assets/activity-fragment-lifecycles.png)
+
 -   **Is there any scenario where onDestoy() will be called without calling onPause() and onStop()?**<br/>
     A) If we call finish() method inside onCreate() of our Activity, then onDestroy() will be called directly.
 
@@ -129,10 +146,10 @@ Quick Jump to Topics:
     1) <b>standard</b> : Creates a new instance of an activity in the task from which it is started every single time. It is the default mode if not declared. 
     <br/>Eg: If we have an activity stack of A->B->C, If we launch Activity C again using standard Mode, the activity stack will now be A->B->C->C. We can see that two instances of C are present in the activity stack.
 
-    2) <b>singleTop</b> : Same as standard except that if the activity is at the top of the stack, then the same instance will be used. Now the existing Activity at the top will receive the intent through a call to its onNewIntent() method.
+    1) <b>singleTop</b> : Same as standard except that if the activity is at the top of the stack, then the same instance will be used. Now the existing Activity at the top will receive the intent through a call to its onNewIntent() method.
      <br/>Eg: If we have an activity stack of A->B->C, If we launch Activity C again using singleTop Mode, the activity stack remains to be A->B->C. However if we launch B, then B will be added as new Instance to the stack (A->B->C->B).
 
-    3) <b>singleTask</b> : A new task will be created and activity will be created at the root of this new task whenever we use launch mode as singleTask. However, if there is already a separate task with same instance, the system will call that activity's onNewIntent() method to route the intent. There can only be one instance of activity existing at a time.
+    2) <b>singleTask</b> : A new task will be created and activity will be created at the root of this new task whenever we use launch mode as singleTask. However, if there is already a separate task with same instance, the system will call that activity's onNewIntent() method to route the intent. There can only be one instance of activity existing at a time.
     <br/>Eg: If our activity stack is A->B->C and if we launch D using singleTask, it will be A->B->C->[D]. Here braces represents the stack in separate stack. If we call E using standard mode, then it will be A->B->C->[D->E].<br/>
     If we have A->B->C and if we call B again using singleTask launch Mode, the stack will now be A->B with B in a separate task. Activity C will be destroyed.
 
@@ -164,18 +181,6 @@ Quick Jump to Topics:
 
 -   **What is the advantage of MVVM over MVP?**<br/>
     A) In MVP, Presenter is responsible for view data updates as well as data operations where as in MVVM, ViewModel does not hold any reference to View. It is the View's responsibility to pick the changes from ViewModel. This helps in writing more maintainable test cases since ViewModel does not depend upon View.
-
--   **Activity Lifecycle**<br/>
-    A)<br/>
-    ![Activity Lifecycle Image](/assets/activity_lifecycle.png)
-
--   **Fragment Lifecycle**<br/>
-    A)<br/>
-    ![Fragment Lifecycle Image](/assets/fragment_lifecycle.png)
-
--   **Service Lifecycle**<br/>
-    A)<br/>
-    ![Fragment Lifecycle Image](/assets/service_lifecycle.png)
 
 -    **When to use AsyncTask and when to use services?**<br/>
     A) Services are useful when you want to run code even when your application's Activity isn't open. AsyncTask is a helper class used to run some code in a separate thread and publish results in main thread. Usually AsyncTask is used for small operations and services are used for long running operations.
