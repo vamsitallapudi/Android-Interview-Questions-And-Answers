@@ -45,7 +45,7 @@ Quick Jump to Topics:
 -   **What is the correlation between activity and fragment life cycle?**<br/>
 -   A) <br/>
     Here is how Activity's and Fragment's lifecyle are called together:
-    [Activity Fragment Lifecycle](assets/activity-fragment-lifecycles.png)
+    ![Activity Fragment Lifecycle](/assets/activity-fragment-lifecycles.png)
 
 -   **Is there any scenario where onDestoy() will be called without calling onPause() and onStop()?**<br/>
     A) If we call finish() method inside onCreate() of our Activity, then onDestroy() will be called directly.
