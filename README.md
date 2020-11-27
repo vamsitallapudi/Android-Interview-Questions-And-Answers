@@ -6,6 +6,7 @@ Quick Jump to Topics:
  * [Core Android](#core-android)
  * [Dagger](#dagger-2-related-questions)
  * [RxJava](#rxjava-related-questions)
+ * [Kotlin Interview Questions](/kotlin/README.md)
 
 ### Core Android
 
