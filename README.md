@@ -208,6 +208,31 @@ Quick Jump to Topics:
     A) We can use Fused location provider in Android set our interval in that.
     https://stackoverflow.com/a/41500910/3424919
 
+
+### Android Security Related
+-   **How do you know if the device is rooted?**<br/>
+    A) We can check if superUser apk is installed in the device or if it contains su file or xbin folder. Alternatively you can use RootBeer library available in GitHub.
+    <br/>
+    For code part, click [Here.](https://stackoverflow.com/a/35628977/3424919).
+
+### Android Battery Related
+-   **How do you reduce battery consumption?**<br/>
+    A) 
+    1. Never poll the server for updates.
+    2. Sync only when required. Ideally, sync when phone is on Wi-Fi and plugged in.
+    3. Defer your work using WorkManager.
+    4. Compress your data
+    5. Defer non immediate requests until the phone is plugged in or wifi is turned on. The Wi-Fi radio uses significantly less battery than the mobile radio.
+
+
+-   **How do you improve battery while fetching location for an app?**<br/>
+    A) 
+    1. By changing Accuracy -> we can use setPriority() to PRIORITY_LOW_POWER
+    2. By changing Frequency of fetching location -> we can use setInterval() to specify the time interval
+    3. By increasing latency -> After our call, we can wait for longer time - we can use setMaxWaitTime() to set large timeout.
+   
+
+
 ### Dagger 2 Related Questions:
 
 -   **What is the use-case of @BindsInstance Annotation?**<br/>
