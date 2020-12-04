@@ -163,7 +163,10 @@ Quick Jump to Topics:
     A) The best way to handle AsyncTask crash is to create a RetainFragment, i.e., a fragment without UI as shown in the gist below: https://gist.github.com/vamsitallapudi/26030c15829d7be8118e42b1fcd0fa42
     We can also avoid this crash by using RxJava instead of AsyncTask as we will be subscribing and unsubscribing at onResume() and onPause() methods respectively.
 
--  **How to reduce your app size?**
+-  **Difference between serializable and parcelable? Why android introduced Parcelable?**<br/>
+    A) Serializable uses reflection while for parcelable developer wrote custom code that performs manual marshalling(converting data into byte stream) and unmarshalling(converting the byte stream back to their original data). Usually Parcelable is considered faster than Serializable.
+-  **How to reduce your app size?**<br/>
+    A)
     1. setting minifyEnabled to true
     2. setting shrinkResources to true
     3. using bundle instead of apk in developer console
@@ -213,13 +216,14 @@ Quick Jump to Topics:
 -   **How do you know if the device is rooted?**<br/>
     A) We can check if superUser apk is installed in the device or if it contains su file or xbin folder. Alternatively you can use RootBeer library available in GitHub.
     <br/>
-    For code part, click [Here.](https://stackoverflow.com/a/35628977/3424919).
+    For code part, click [Here](https://stackoverflow.com/a/35628977/3424919).
 -   **What is Symmetric Encryption?**<br/>
     A) Symmetric encryption deals with creating a passphrase and encrypting the file with it. Then the server needs to send the key to the client so that the client can decrypt. Here the problem is sending that key to decrypt the file. Hackers can easily access that key and could misuse the data.
 -   **What is Asymmetric Encryption?**<br/>
     A) Using algorithms like RSA, the server generates 2 keys - public key and private key. The server then gives public key to clients. Client then encrypts the sensitive data with that public key and send it back to server. Now as the server alone has the private key, only it can decrypt the data. This is the most efficient way of sending data across the client and server.
     <br/>
     Example of this Asymmetric encryption are HTTPS using SSL certificate, Bitcoin, etc.
+    For more info, refer to this [video](https://youtu.be/AQDCe585Lnc)
 
 
 ### Android Battery Related
