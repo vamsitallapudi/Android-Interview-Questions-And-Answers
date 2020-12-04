@@ -214,6 +214,13 @@ Quick Jump to Topics:
     A) We can check if superUser apk is installed in the device or if it contains su file or xbin folder. Alternatively you can use RootBeer library available in GitHub.
     <br/>
     For code part, click [Here.](https://stackoverflow.com/a/35628977/3424919).
+-   **What is Symmetric Encryption?**<br/>
+    A) Symmetric encryption deals with creating a passphrase and encrypting the file with it. Then the server needs to send the key to the client so that the client can decrypt. Here the problem is sending that key to decrypt the file. Hackers can easily access that key and could misuse the data.
+-   **What is Asymmetric Encryption?**<br/>
+    A) Using algorithms like RSA, the server generates 2 keys - public key and private key. The server then gives public key to clients. Client then encrypts the sensitive data with that public key and send it back to server. Now as the server alone has the private key, only it can decrypt the data. This is the most efficient way of sending data across the client and server.
+    <br/>
+    Example of this Asymmetric encryption are HTTPS using SSL certificate, Bitcoin, etc.
+
 
 ### Android Battery Related
 -   **How do you reduce battery consumption?**<br/>
