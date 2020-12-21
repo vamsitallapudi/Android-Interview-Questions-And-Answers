@@ -1,5 +1,7 @@
 # Android Interview Questions And Answers
 
+  ![Android Interview Questions Coderefer Thumbnail](/assets/android-interview-questions-cr-thumbnail.jpg)
+
 ### Curated List of Real-time Android Interview Questions. Help fellow developers by contributing to these interview Questions - Create a pull request in  [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
 
 Quick Jump to Topics:
@@ -164,7 +166,7 @@ Quick Jump to Topics:
     We can also avoid this crash by using RxJava instead of AsyncTask as we will be subscribing and unsubscribing at onResume() and onPause() methods respectively.
 
 -  **Difference between serializable and parcelable? Why android introduced Parcelable?**<br/>
-    A) Serializable uses reflection while for parcelable developer wrote custom code that performs manual marshalling(converting data into byte stream) and unmarshalling(converting the byte stream back to their original data). Usually Parcelable is considered faster than Serializable.
+    A) Serializable uses reflection while for parcelable, developers from android team wrote custom code that performs manual marshalling(converting data into byte stream) and unmarshalling(converting the byte stream back to their original data). Usually Parcelable is considered faster than Serializable.
 -  **How to reduce your app size?**<br/>
     A)
     1. setting minifyEnabled to true
