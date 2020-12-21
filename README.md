@@ -12,16 +12,29 @@ Quick Jump to Topics:
 
 ### Core Android
 
+-   **What are SOLID Principles? How they are applicable in Android?**<br/>
+    A) SOLID unites all the best practices of software development over the years to deliver good quality apps. Understanding SOLID Principles will help us write clean and elegant code. It helps us write the code with SOC (Separation of Concerns).
+    SOLID Principles is an acronym for:
+    1. S stands for Single Responsibility Principle(SRP) - A class should have only one reason to change
+    2. O stands for Open Closed Principle - Software entities such as classes, functions, modues should be open for extension but closed for modification.
+    3. L stands for Liskov Substitution Principle - Derived class must be usable through the base class interface, without the need for user to know the difference.
+    4. I stands for Interface Segregation - No client should be forced to depend on methods that it doesn't use.
+    5. D stands for Dependency Inversion - 
+       1. High Level Modules should not directly depend on Low level modules. Instead both should depend on abstractions.
+       2. Abstractions should not depend on details. Details should depend on abstractions.
+
+    [Learn More about SOLID principles with Android Examples Here.](https://www.coderefer.com/blog/solid-principles-in-android-with-kotlin-examples/)
+
 -   **Android Architecture**<br/>
     A) <br/>
     ![Android Architecture Image](/assets/android-architecture.png)
 
 -   **What are Android Components?**<br/>
     A) 1) Activities,
-    2) Intent and broadcast receivers,
-    3) Services,
-    4) Content Providers,
-    5) Widgets and Notifications
+    1) Intent and broadcast receivers,
+    2) Services,
+    3) Content Providers,
+    4) Widgets and Notifications
 
 -   **What is an Application class?**<br/>
     A) An Application class is a base class in your Application starts before all other classes like Activities or services are called. You can maintain your application's global state here. While it is NOT mandatory that you need to extend Application class, you can do so by providing your own implementation by creating a subclass and specifying the fully-qualified name of this subclass as the "android:name" attribute in your AndroidManifest.xml's <application> tag.
