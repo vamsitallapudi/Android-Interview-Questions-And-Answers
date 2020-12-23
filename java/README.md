@@ -1,2 +1,2 @@
-Is Java a Pass By Value or Pass by Reference?
-A) Java is always a Pass by Value. Any value which is modified in the called function will not be reflected in the calling function. For Example, [Click Here.](https://stackoverflow.com/a/12429953/3424919)
+-   **Is Java a Pass By Value or Pass by Reference?**<br/>
+    A) Java is always a Pass by Value. Any value which is modified in the called function will not be reflected in the calling function. For Example, [Click Here.](https://stackoverflow.com/a/12429953/3424919)
