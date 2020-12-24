@@ -68,7 +68,10 @@ Quick Jump to Topics:
     A) If we call finish() method inside onCreate() of our Activity, then onDestroy() will be called directly.
 
 -   **How do we save and restore an activity's state during screen screen rotation?**<br/>
-    A) We can use onSavedInstanceState(bundle:Bundle) to save the activity's state inside a bundle. Then we can use onRestoreInstanceState(bundle) to restore the state of activity. However with Modern Android Development(MAD), we can use ViewModel to achieve the same and it is the recommended approach.
+    A) We can use onSavedInstanceState(bundle:Bundle) to save the activity's state inside a bundle. Then we can use onRestoreInstanceState(bundle) to restore the state of activity.
+
+-   **What is a Loader in Android?**<br/>
+    A) Note: (Loader is Deprecated. We Have to use combination of ViewModels and LiveData instead of using Loaders) A Loader is used to fetch the data from a Content provider and cache the results across the configuration changes to avoid duplicate queries. Few implementations of Loaders like CursorLoader can implement an observer to monitor any data changes and can then trigger a reload.
 
 -   **What is an Intent Filter?**<br/>
     A) Intent filters are a very powerful feature of the Android platform. They provide the ability to launch an activity based not only on an explicit request, but also an implicit one. For example, an explicit request might tell the system to “Start the Send Email activity in the Gmail app". By contrast, an implicit request tells the system to “Start a Send Email screen in any activity that can do the job." When the system UI asks a user which app to use in performing a task, that’s an intent filter at work. Here's an example of how to declare Intent Filter in AndroidManifest:
@@ -128,9 +131,6 @@ Quick Jump to Topics:
 -   **When does a Bound Service stops?**<br/>
     A) A Bound Service will stop automatically by the system when all the Application Components bound to it are unbinded.
 
--   **What is an Intent Service?**<br/>
-    A) IntentService is a Service that can perform tasks using worker thread unlike service that blocks main thread.
-
 -   **What is the difference between START_NOT_STICKY, START_STICKY AND START_REDELIVER_INTENT?**<br/>
     A) **START_NOT_STICKY:**<br/>
     If the system kills the service after onStartCommand() returns, do not recreate the service unless there are pending intents to deliver. This is the safest option to avoid running your service when not necessary and when your application can simply restart any unfinished jobs.<br/>
@@ -141,6 +141,9 @@ Quick Jump to Topics:
 
 -   **What is Pending Intent?**<br/>
     A)A PendingIntent is a token that you give to a foreign application (e.g. NotificationManager, AlarmManager, Home Screen AppWidgetManager, or other 3rd party applications), which allows the foreign application to use your application's permissions to execute a predefined piece of code. It specifies a task that requires to be performed in future.
+
+-   **What is an Intent Service?**<br/>
+    A) IntentService is a subclass of Service that can perform tasks using worker thread unlike service that blocks main thread.
 
 -   **What is the method that differentiates it to make Service run in background?**<br/>
     A) onHandleIntent() is the method that helps the IntentService to run a particular code block declared inside it, in worker/background thread.
@@ -168,7 +171,7 @@ Quick Jump to Topics:
 
     2) <b>singleTask</b> : A new task will be created and activity will be created at the root of this new task whenever we use launch mode as singleTask. However, if there is already a separate task with same instance, the system will call that activity's onNewIntent() method to route the intent. There can only be one instance of activity existing at a time.
     <br/>Eg: If our activity stack is A->B->C and if we launch D using singleTask, it will be A->B->C->[D]. Here braces represents the stack in separate stack. If we call E using standard mode, then it will be A->B->C->[D->E].<br/>
-    If we have A->B->C and if we call B again using singleTask launch Mode, the stack will now be A->B with B in a separate task. Activity C will be destroyed.
+    If we have A->B->C and if we call B again using singleTask launch Mode, the stack will now be A->B with B in a separate task. Activity C will be destroyed. If A->B are in one task and C->D are in another task,
 
     1) <b>singleInstance</b> : the activity will be created in a new task, and that task will contain only that activity. Also only one instance of that activity will be available for all the tasks.
     <br/>Eg: if the Activity stack is A->B and now we launched C using singleInstance Launch Mode, the new stack will be A->B->[C]. Now if we launch D from activity B, Then new stack will be A->B->D [C]. If we call C again, onNewIntent() of C will be called and new stack will be A->B->D->[C].
