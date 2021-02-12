@@ -170,10 +170,10 @@ Quick Jump to Topics:
      <br/>Eg: If we have an activity stack of A->B->C, If we launch Activity C again using singleTop Mode, the activity stack remains to be A->B->C. However if we launch B, then B will be added as new Instance to the stack (A->B->C->B).
 
     2) <b>singleTask</b> : A new task will be created and activity will be created at the root of this new task whenever we use launch mode as singleTask. However, if there is already a separate task with same instance, the system will call that activity's onNewIntent() method to route the intent. There can only be one instance of activity existing at a time.
-    <br/>Eg: If our activity stack is A->B->C and if we launch D using singleTask, it will be A->B->C->[D]. Here braces represents the stack in separate stack. If we call E using standard mode, then it will be A->B->C->[D->E].<br/>
-    If we have A->B->C and if we call B again using singleTask launch Mode, the stack will now be A->B with B in a separate task. Activity C will be destroyed. If A->B are in one task and C->D are in another task,
+    <br/>Eg: If our activity stack is A->B->C and if we launch D using singleTask, it will be A->B->C->[D]. Here braces represents the stack in separate task. If we call E using standard mode, then it will be A->B->C->[D->E].<br/>
+    If we have A->B->C and if we call B again using singleTask launch Mode, the stack will now be A->[B] with B in a separate task. Activity C will be destroyed. If A->B are in one task and C->D are in another task,
 
-    1) <b>singleInstance</b> : the activity will be created in a new task, and that task will contain only that activity. Also only one instance of that activity will be available for all the tasks.
+    1) <b>singleInstance</b> : Same as Single Task except that once an activity is created in a new task, that task will contain only that activity. Also only one instance of that activity will be available for all the tasks.
     <br/>Eg: if the Activity stack is A->B and now we launched C using singleInstance Launch Mode, the new stack will be A->B->[C]. Now if we launch D from activity B, Then new stack will be A->B->D [C]. If we call C again, onNewIntent() of C will be called and new stack will be A->B->D->[C].
 
     You can read more about them [here](https://developer.android.com/guide/components/activities/tasks-and-back-stack#ManifestForTasks).
@@ -181,6 +181,9 @@ Quick Jump to Topics:
 -   **How to handle crashing of AsyncTask during screen rotation?**<br/>
     A) The best way to handle AsyncTask crash is to create a RetainFragment, i.e., a fragment without UI as shown in the gist below: https://gist.github.com/vamsitallapudi/26030c15829d7be8118e42b1fcd0fa42
     We can also avoid this crash by using RxJava instead of AsyncTask as we will be subscribing and unsubscribing at onResume() and onPause() methods respectively.
+
+-  **What is a RetainFragment?**<br/>
+    Generally, Fragments are destroyed and recreated along with their parent Activity’s whenever a configuration change occurs. Calling setRetainInstance(true) allows us to bypass this destroy-and-recreate cycle, notifying the system to retain the current instance of the fragment when the activity is recreated.
 
 -  **Difference between serializable and parcelable? Why android introduced Parcelable?**<br/>
     A) Serializable uses reflection while for parcelable, developers from android team wrote custom code that performs manual marshalling(converting data into byte stream) and unmarshalling(converting the byte stream back to their original data). Usually Parcelable is considered faster than Serializable.
@@ -237,7 +240,7 @@ Quick Jump to Topics:
     <br/>
     For code part, click [Here](https://stackoverflow.com/a/35628977/3424919).
 -   **What is Symmetric Encryption?**<br/>
-    A) Symmetric encryption deals with creating a passphrase and encrypting the file with it. Then the server needs to send the key to the client so that the client can decrypt. Here the problem is sending that key to decrypt the file. Hackers can easily access that key and could misuse the data.
+    A) Symmetric encryption deals with creating a passphrase and encrypting the file with it. Then the server needs to send the key to the client so that the client can decrypt. Here the problem is sending that key to decrypt the file. If Hackers can access that key, they can misuse the data.
 -   **What is Asymmetric Encryption?**<br/>
     A) Using algorithms like RSA, the server generates 2 keys - public key and private key. The server then gives public key to clients. Client then encrypts the sensitive data with that public key and send it back to server. Now as the server alone has the private key, only it can decrypt the data. This is the most efficient way of sending data across the client and server.
     <br/>
