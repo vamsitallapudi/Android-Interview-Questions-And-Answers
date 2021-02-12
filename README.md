@@ -265,6 +265,16 @@ Quick Jump to Topics:
 
 ### Dagger 2 Related Questions:
 
+-   **What is Dependency Injection Pattern?**<br/>
+    A) Dependency Injection pattern is where if our object requires other object, it will be passed to our object instead of us having to create that object. This other object is called as dependency.
+
+-   **What is Service Locator Pattern?**<br/>
+    A) Service Locator Pattern uses central Registry known as Service Locator which upon request provides objects for our class. This pattern has severe criticism that its an Anti-Pattern.
+
+-   **What is Anti-Pattern?**<br/>
+    A) An anti-pattern are certain patterns in software development that are considered bad programming practices.<br/>
+    For more, click [Here](https://stackoverflow.com/a/980616/3424919).
+
 -   **What is the use-case of @BindsInstance Annotation?**<br/>
     A) @BindsInstance is used to bind the available data at the time building the Component. Suppose I have user name available before building a component then I can use as shown in the following example:
     https://google.github.io/dagger/users-guide.html#binding-instances
