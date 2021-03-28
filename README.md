@@ -17,7 +17,7 @@ Quick Jump to Topics:
     A) SOLID unites all the best practices of software development over the years to deliver good quality apps. Understanding SOLID Principles will help us write clean and elegant code. It helps us write the code with SOC (Separation of Concerns).
     SOLID Principles is an acronym for:
     1. S stands for Single Responsibility Principle(SRP) - A class should have only one reason to change
-    2. O stands for Open Closed Principle - Software entities such as classes, functions, modues should be open for extension but closed for modification.
+    2. O stands for Open Closed Principle - Software entities such as classes, functions, modules should be open for extension but closed for modification.
     3. L stands for Liskov Substitution Principle - Derived class must be usable through the base class interface, without the need for user to know the difference.
     4. I stands for Interface Segregation - No client should be forced to depend on methods that it doesn't use.
     5. D stands for Dependency Inversion - 
