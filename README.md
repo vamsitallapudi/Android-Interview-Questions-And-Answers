@@ -104,8 +104,22 @@ Quick Jump to Topics:
     A) HandlerThread is a Handy class to start a thread that has a Looper.
 
 -   **What is a Looper?**<br/>
-    A) A Looper is a class used to loop through the Message Queue attached to the Thread. By default, a thread halts when the execution completes. But, for Example, if we take Android's Main thread, it should not halt upon execution.
+    A) A Looper is a class used to loop through the Message Queue attached to the Thread. Any thread consists of only one looper.
+    
+    You can access message queue of current thread by using **Looper.myQueue()**.
+    
+    By default, a thread halts when the execution completes. But, for Example, if we take Android's Main thread, it should not halt upon execution.
+
+    Normally thread cannot be reused once its job is completed. But thread with Looper is kept alive until you call quit method so you don’t need to create a new instance each time you want to run a job in background.
+    
     Rather it should loop through the runnables(Messages) that its assigned in order to work properly. For more info, refer to this [link](https://stackoverflow.com/a/34522758/3424919).
+
+-   **What is a Message Queue?**<br/>
+    A) MessageQueue is a queue that has list of messages which should be processed. Android maintains a MessageQueue on the main thread.
+    [More Info](https://medium.com/@ankit.sinhal/messagequeue-and-looper-in-android-3a18c7fc9181)
+
+-   **What is a Message ?**<br/>
+    A) Message contains a description and arbitrary data object that can be sent to a Handler. Basically its used to process / send some data.
 
 -   **What is a Service?**<br/>
     A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new background thread or use an IntentService that can do work in background. [Read More.](https://developer.android.com/guide/components/services)
