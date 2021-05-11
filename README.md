@@ -2,7 +2,7 @@
 
   ![Android Interview Questions Coderefer Thumbnail](/assets/android-interview-questions-cr-thumbnail.jpg)
 
-### Curated List of Real-time Android Interview Questions. Help fellow developers by contributing to these interview Questions - Create a pull request in  [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
+### Curated List of Real-time Android Interview Questions. Found Any Errors / Want to help fellow developers? - Create a pull request in  [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
 
 Quick Jump to Topics:
  * [Core Android](#core-android)
@@ -32,13 +32,13 @@ Quick Jump to Topics:
 
 -   **What are Android Components?**<br/>
     A) 1) Activities,
-    1) Intent and broadcast receivers,
-    2) Services,
-    3) Content Providers,
-    4) Widgets and Notifications
+    2) Intent and broadcast receivers,
+    3) Services,
+    4) Content Providers,
+    5) Widgets and Notifications
 
 -   **What is an Application class?**<br/>
-    A) An Application class is a base class in your Application starts before all other classes like Activities or services are called. You can maintain your application's global state here. While it is NOT mandatory that you need to extend Application class, you can do so by providing your own implementation by creating a subclass and specifying the fully-qualified name of this subclass as the "android:name" attribute in your AndroidManifest.xml's <application> tag.
+    A) An Application class is a base class in your Application that starts before all other classes like Activities or services are called. You can maintain your application's global state here. While it is NOT mandatory that you need to extend Application class, you can do so by providing your own implementation by creating a subclass and specifying the fully-qualified name of this subclass as the "android:name" attribute in your AndroidManifest.xml's <application> tag.
 
 -   **What is a Context? What are different types of Contexts?**<br/>
     A) As the name says, its the context of the current application or object. Context is like a handle to the environment your application is currently running in.
@@ -111,7 +111,7 @@ Quick Jump to Topics:
     By default, a thread halts when the execution completes. But, for Example, if we take Android's Main thread, it should not halt upon execution.
 
     Normally thread cannot be reused once its job is completed. But thread with Looper is kept alive until you call quit method so you don’t need to create a new instance each time you want to run a job in background.
-    
+
     Rather it should loop through the runnables(Messages) that its assigned in order to work properly. For more info, refer to this [link](https://stackoverflow.com/a/34522758/3424919).
 
 -   **What is a Message Queue?**<br/>
@@ -119,7 +119,7 @@ Quick Jump to Topics:
     [More Info](https://medium.com/@ankit.sinhal/messagequeue-and-looper-in-android-3a18c7fc9181)
 
 -   **What is a Message ?**<br/>
-    A) Message contains a description and arbitrary data object that can be sent to a Handler. Basically its used to process / send some data.
+    A) Message contains a description and arbitrary data object that can be sent to a Handler. Basically its used to process / send some data across threads.
 
 -   **What is a Service?**<br/>
     A) A service is a component which doesn't have UI and can perform long running operations like downloading stuff, playing music etc.. which can run even exiting the application. By default service runs on main thread. This might cause ANR errors. To avoid this, we can Start service by creating a new background thread or use an IntentService that can do work in background. [Read More.](https://developer.android.com/guide/components/services)
@@ -169,7 +169,7 @@ Quick Jump to Topics:
     A) The IntentService can be used in long tasks usually with no communication to Main Thread. If communication is required, can use Main Thread handler or broadcast intents. Another case of use is when callbacks are needed (Intent triggered tasks).
 
 -   **Advantage of Retrofit over Volley?**<br/>
-    A) Retrofit is type-safe. Type safety means that the compiler will validate types while compiling, and throw an error if you try to assign the wrong type to a variable.
+    A) Retrofit is type-safe. Type safety means that the compiler will validate reques and response object's variable types while compiling, and throw an error if you try to assign the wrong type to a variable.
 
 -   **Advantage of Volley over Retrofit?**<br/>
     A) Android Volley has a very elaborate and flexible cache mechanism. When a request is made through Volley, first the cache is checked for Response. If it is found, then it is fetched and parsed, else, it will hit Network to fetch the data. Retrofit does not support cache by default.
@@ -237,7 +237,7 @@ Quick Jump to Topics:
 
 -   **String a = “abc”;  String b = new String(“abc”); Will a == b ??**<br/>
     A) It depends. Here with the first statement, i.e, String a = “abc”, JVM will search for a string with “abc” in String constant pool(SCP) and if its not there it will create a new Object.
-    If we wrote second statement similarly, i.e., String b = “abc”, then b will point to same string from SCP.
+    If we declare it again, i.e., String b = “abc”, then b will point to same string from SCP.
     However, String b = new String(“abc”) always creates a new String object.
 
 -  **What is Alarm Manager?**<br/>
@@ -293,8 +293,15 @@ Quick Jump to Topics:
     For more, click [Here](https://stackoverflow.com/a/980616/3424919).
 
 -   **What is the use-case of @BindsInstance Annotation?**<br/>
-    A) @BindsInstance is used to bind the available data at the time building the Component. Suppose I have user name available before building a component then I can use as shown in the following example:
-    https://google.github.io/dagger/users-guide.html#binding-instances
+    A) @BindsInstance is used to bind the available data at the time of building the Component. For example, while I needed to build dagger graph and username is already available to me, then I can bind that username to that dagger dependency graph as follows:
+    
+    ```java
+        @Component.Builder
+        interface Builder {
+            @BindsInstance Builder userName(@UserName String userName);
+            AppComponent build();
+        }
+    ```
 
 
 -   **What is the use-case of @Module Annotation?**<br/>
