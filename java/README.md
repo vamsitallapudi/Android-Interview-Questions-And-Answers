@@ -50,7 +50,7 @@
     A) 
 <!-- TABLE_GENERATE_START -->
 
-| First Header                                                                                                | Second Header                                                             |
+| HashMap                                                                                                     | HashTable                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | 1. HashMap is non-synchronized                                                                              | 1. HashTable is synchronized, hence Thread-safe                           |
 | 2. HashMap allows one Null Key and multiple Null Values                                                     | 2. HashTable does not allow any null keys or null values                  |
