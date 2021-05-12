@@ -27,3 +27,38 @@
             }
         }
     ```
+
+2. By using CopyOnWriteArrayList, which is a thread-safe variant of ArrayList. It is the part of java.util.concurrent package of java. When multiple threads are operating on this arraylist and if any thread want to perform write operation, a cloned copy of that arraylist will be created where the write operation is performed and at later point, JVM syncs these two arraylist copies.
+
+    **Disadvantages of CopyOnWriteArrayList:** Since for every thread which performs write operation, a new copy of arraylist is created, if these operations increases, more memory is used.
+
+```java
+        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+        list.add("Java");
+        list.add("Python");
+        list.add("C++");
+
+        //No explicit synchronization is needed during iteration
+        Iterator<String> it = list.iterator();
+        while(it.hasNext()) {
+            System.out.println(it.next());
+        }
+```
+
+
+- **HashMap vs HashTable** <br>
+    A) 
+<!-- TABLE_GENERATE_START -->
+
+| First Header                                                                                                | Second Header                                                             |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| 1. HashMap is non-synchronized                                                                              | 1. HashTable is synchronized, hence Thread-safe                           |
+| 2. HashMap allows one Null Key and multiple Null Values                                                     | 2. HashTable does not allow any null keys or null values                  |
+| 3. HashMap is fast as it is Non-Synchronized and it is usually preferred if thread-safety is not a priority | 2. HashTable is usually slow compared to HashMap since it is Synchronized |
+
+<!-- TABLE_GENERATE_END -->
+
+<br>
+
+- **How do you make a HashMap Synchronized?** <br>
+  A) 
