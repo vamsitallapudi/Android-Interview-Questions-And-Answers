@@ -40,18 +40,18 @@
 
     ***Disadvantages of CopyOnWriteArrayList:*** Since for every thread which performs write operation, a new copy of arraylist is created, if these operations increases, more memory is used.
 
-    ```java
-            CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
-            list.add("Java");
-            list.add("Python");
-            list.add("C++");
+```java
+        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+        list.add("Java");
+        list.add("Python");
+        list.add("C++");
 
-            //No explicit synchronization is needed during iteration
-            Iterator<String> it = list.iterator();
-            while(it.hasNext()) {
-                System.out.println(it.next());
-            }
-    ```
+        //No explicit synchronization is needed during iteration
+        Iterator<String> it = list.iterator();
+        while(it.hasNext()) {
+            System.out.println(it.next());
+        }
+```
     <br>
 
 - **HashMap vs HashTable** <br>
@@ -62,13 +62,17 @@
 | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | 1. HashMap is non-synchronized                                                                              | 1. HashTable is synchronized, hence Thread-safe                           |
 | 2. HashMap allows one Null Key and multiple Null Values                                                     | 2. HashTable does not allow any null keys or null values                  |
-| 3. HashMap is fast as it is Non-Synchronized and it is usually preferred if thread-safety is not a priority | 2. HashTable is usually slow compared to HashMap since it is Synchronized |
-
+| 3. HashMap is fast as it is Non-Synchronized and it is usually preferred if thread-safety is not a priority | 3. HashTable is usually slow compared to HashMap since it is Synchronized |
+| 4. HashMap is the most used class                                                                           | 4. HashTable is a legacy class                                            |
 <!-- TABLE_GENERATE_END -->
 
 <br>
 
-- **What is the time complexity to Insert into HashMap?** <br>
+- **What is the time complexity for various operations of HashMap / HashTable?** <br>
+    A) Insert -> Average - O(1), Worst Case - O(N)<br>
+    Search -> Average - O(1), Worst Case - O(N)
+    Delete -> Average - O(1), Worst Case - O(N)
+    For More details, see [Wiki](https://en.wikipedia.org/wiki/Hash_table).
 
 
 - **How do you make a HashMap Synchronized?** <br>
@@ -99,8 +103,31 @@
 
 
 - **Does HashMap maintains Order in which items are inserted?** <br>
-  A) 
+  A) No. We have to use LinkedHashMap to maintain the order.
 
+- **What is a LinkedHashMap?** <br>
+  A) LinkedHashMap maintains the order in which items are inserted. LinkedHashMap is same as HashMap - non-synchronized and contains one Null Key and multiple Null Values, the additional feature is it maintains insertion order.
 
-- **What is the Time and Space Complexity to insert into a HashMap?** <br>
-  A)
+- **What is a TreeMap?** <br>
+    A) A TreeMap is sorted by Keys. Here is an example:
+
+    ```java
+        Map<Integer, String> registry = new TreeMap<>();
+        registry.put(10, "Vamsi");
+        registry.put(1, "Krishna");
+        registry.put(5, "Tallapudi");
+        Iterator<Map.Entry<Integer, String>> iterator = registry.entrySet().iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, String> registryEntry = iterator.next();
+            System.out.println("Name: " + registryEntry.getValue() + ", Roll No: " + registryEntry.getKey());
+        }
+
+        /*  OUTPUT:
+            Name: Krishna, Roll No: 1
+            Name: Tallapudi, Roll No: 5
+            Name: Vamsi, Roll No: 10
+        */
+    ```
+
+    Here as we can see entries are sorted by their keys - Roll Numbers. If we want to sort by Strings, we need to use custom comparator.
