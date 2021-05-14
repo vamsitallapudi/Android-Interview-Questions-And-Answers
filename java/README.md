@@ -241,4 +241,25 @@
     ```
     <br>
 
+- **What is Garbage Collector?**<br>
+    A) Whenever new objects are created, they will occupy some memory. When lot of objects are created, then there might be chance that we might get OutOfMemory errors. In Java, Garbage Collector automatically destroys unused objects. An object will be eligible for GC once it becomes unreachable and no variable is referring it.
+
+
+- **How to make an object eligible for Garbage Collection?**<br>
+    A) Generally we can make an object eligible for Garbage Collection in 4 ways:
+    1. Assigning the reference variable to null
+    2. Re-Assigning the reference variable
+    3. Objects created inside a method, after the method execution
+    4. By creation of Anonymous objects (i.e., new Obj() without any reference)
+
+- **Can we manually call JVM's Garbage Collector?**<br>
+    A) Yes we can. After we make our object as eligible for GC, there is no specific time when the GC will be cleaning this object. Hence if we want to request JVM to run GC, we can do it in two ways:
+    1. System.gc()
+    2. Runtime.getRuntime().gc()
+
+    Both are effectively equal. **Note:** There is no guarantee that any one of the above two methods will definitely run GC. We are just requesting JVM.
+
+- **?**<br>
+
+
 
