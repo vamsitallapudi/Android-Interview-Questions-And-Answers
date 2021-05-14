@@ -3,6 +3,18 @@
 -   **Is Java a Pass By Value or Pass by Reference?**<br/>
     A) Java is always a Pass by Value. Any value which is modified in the called function will not be reflected in the calling function. For Example, [Click Here.](https://stackoverflow.com/a/12429953/3424919)
 
+-   **Heap Space vs Stack Memory in Java?**<br/>
+    A) 
+        <!-- TABLE_GENERATE_START -->
+
+    | Heap Space                                                                                                                                                 | Stack Memory                                                                                                                                                                                                                                |
+    | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | 1. Heap space is used for dynamic memory allocation of Java objects and JRE classes at runtime. Whenever a new object is created, it exists in Heap Space. | 1. Stack Memory is used in Java for static memory allocation. Whenever a new method is called for execution, a new block on top of stack is created which contains the primitive variables and references to objects related to that method |
+    | 2. If memory is full JVM throws java.lang.OutOfMemoryError                                                                                                 | 2. Whenever the stack memory is full, JVM throws java.lang.StackOverflowError                                                                                                                                                               |
+    | 3. Access to this memory is slow comparitively.                                                                                                            | 3. Access to this memory is faster compared to Heap Space.                                                                                                                                                                                  |
+    | 4. Not thread-safe                                                                                                                                         | 4. It is thread-safe.                                                                                                                                                                                                                       |
+    <!-- TABLE_GENERATE_END -->
+
 - **ArrayLists vs Vectors?** <br>
     A) Arraylists are to be preferred by default.
     1. Vector doubles its capacity when additional elements are to be accommodated where as Arraylists increases their size by 50%.
@@ -43,30 +55,30 @@
     ***Disadvantages of CopyOnWriteArrayList:*** Since for every thread which performs write operation, a new copy of arraylist is created, if these operations increases, more memory is used.
 
 ```java
-        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
-        list.add("Java");
-        list.add("Python");
-        list.add("C++");
+    CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+    list.add("Java");
+    list.add("Python");
+    list.add("C++");
 
-        //No explicit synchronization is needed during iteration
-        Iterator<String> it = list.iterator();
-        while(it.hasNext()) {
-            System.out.println(it.next());
-        }
+    //No explicit synchronization is needed during iteration
+    Iterator<String> it = list.iterator();
+    while(it.hasNext()) {
+        System.out.println(it.next());
+    }
 ```
 <br>
 
 - **HashMap vs HashTable** <br>
     A) 
-<!-- TABLE_GENERATE_START -->
+    <!-- TABLE_GENERATE_START -->
 
-| HashMap                                                                                                     | HashTable                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| 1. HashMap is non-synchronized                                                                              | 1. HashTable is synchronized, hence Thread-safe                           |
-| 2. HashMap allows one Null Key and multiple Null Values                                                     | 2. HashTable does not allow any null keys or null values                  |
-| 3. HashMap is fast as it is Non-Synchronized and it is usually preferred if thread-safety is not a priority | 3. HashTable is usually slow compared to HashMap since it is Synchronized |
-| 4. HashMap is the most used class                                                                           | 4. HashTable is a legacy class                                            |
-<!-- TABLE_GENERATE_END -->
+    | HashMap                                                                                                     | HashTable                                                                 |
+    | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+    | 1. HashMap is non-synchronized                                                                              | 1. HashTable is synchronized, hence Thread-safe                           |
+    | 2. HashMap allows one Null Key and multiple Null Values                                                     | 2. HashTable does not allow any null keys or null values                  |
+    | 3. HashMap is fast as it is Non-Synchronized and it is usually preferred if thread-safety is not a priority | 3. HashTable is usually slow compared to HashMap since it is Synchronized |
+    | 4. HashMap is the most used class                                                                           | 4. HashTable is a legacy class                                            |
+    <!-- TABLE_GENERATE_END -->
 
 <br>
 
