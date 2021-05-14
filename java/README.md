@@ -52,7 +52,7 @@
             System.out.println(it.next());
         }
 ```
-    <br>
+<br>
 
 - **HashMap vs HashTable** <br>
     A) 
@@ -131,3 +131,114 @@
     ```
 
     Here as we can see entries are sorted by their keys - Roll Numbers. If we want to sort by Strings, we need to use custom comparator.
+
+- **What are various types of References in Java?** <br>
+    A) In Java, there are 4 types of references differentiated based on the way by which they are garbage collected:
+    1. Strong Reference,
+    2. Weak Reference,
+    3. Soft Reference,
+    4. Phantom Reference
+
+- **What is Strong Reference?** <br>
+    A) This is the default type of Reference for an Object. Any Object which has strong reference is not eligible for Garbage Collection. The object is eligible for garbage collection only if its strongly referenced variable points to null.
+    ```java
+    Person p = new Person();
+    p = null; // now p is pointing to null, hence the new Person() object which is created is now eligible for GC
+    ```
+    <br>
+
+- **What is a Weak Reference?** <br>
+    A) Weak Reference Objects are not default. We have to explicitly specify while using them.<br>
+    By using Weak Reference Objects, JVM can identify these objects and mark them as eligible for garbage collection.<br>
+    Here is a typical example for Weak Reference:
+    ```java
+        Person p = new Person();
+        WeakReference<Person> personWeakReference = new WeakReference<>(p);
+        p = personWeakReference.get(); // making this p which is strongly referenced, now point to weak reference
+        if (p != null) { // null check because garbage collector might have collected it.
+            p.getName();
+        }
+    ```
+    <br>
+
+    In real-time, they can be used for ImageViews referencing in Android where if user goes to another screen, the imageview's reference is eligible for garbage collection.
+
+    ```java
+        class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
+            private final WeakReference<ImageView> imageViewReference;
+            private int data = 0;
+
+            public BitmapWorkerTask(ImageView imageView) {
+                // Use a WeakReference to ensure the ImageView can be garbage collected
+                imageViewReference = new WeakReference<ImageView>(imageView);
+            }
+
+            // Decode image in background.
+            @Override
+            protected Bitmap doInBackground(Integer... params) {
+                data = params[0];
+                return decodeSampledBitmapFromResource(getResources(), data, 100, 100));
+            }
+
+            // Once complete, see if ImageView is still around and set bitmap.
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                if (imageViewReference != null && bitmap != null) {
+                    final ImageView imageView = imageViewReference.get();
+                    if (imageView != null) {
+                        imageView.setImageBitmap(bitmap);
+                    }
+                }
+            }
+        }
+    ```
+    <br> 
+
+    For more info, [Click Here.](https://stackoverflow.com/a/29590774)
+
+- **What is a Soft Reference?** <br>
+    A) In a soft reference, even if an object is free to be garbage collected, then also it is not collected by GC until JVM is in need of memory badly. This object gets cleared from the memory when JVM runs out of memory.
+
+- **What is a Phantom Reference?** <br>
+    A) The objects which are being referenced by phantom references are eligible for garbage collection. Phantom reference is used for pre-mortem clean-up actions before the GC removes the object. It can be used as a better replacement to finalize method (finalize can slow down JVM).
+
+- **What is finalize method?** <br>
+    A) This method will be called by the Garbage Collector(GC) just before destroying the objects to perform clean-up activities. Some of the clean-up activities are - closing the resources associated with that objects like Database connections, resource deallocation, closing Network connections, etc.
+
+- **What is a WeakHashMap?**<br>
+    A) This class is designed to utilize the power of Weak References. WeakHashMap is almost similar to HashMap except one case - if object is specified as key and if it doesn't contain any references, then it is eligible for garbage collection even though it is associated with WeakHashMap - in other words, GC dominates over WeakHashMap.
+
+    ```java
+    public class WeakHashMapEg {
+        public static void main(String[] args) throws Exception {
+            WeakHashMap<Person, Integer> hm = new WeakHashMap<>();
+            Person p = new Person();
+            Person q = new Person();
+
+            hm.put(p, 1);
+            hm.put(q, 1);
+            p = null; // making the first person object eligible for gc
+            System.out.println("before: " + hm);
+            System.gc(); //calling garbage collector
+            Thread.sleep(1000);
+            System.out.println("after: " + hm);
+
+        }
+
+        static class Person {
+            @Override
+            protected void finalize() throws Throwable {
+                System.out.println("Calling finalize method");
+                super.finalize();
+            }
+        }
+    }
+    /* OUTPUT:
+        before: {WeakHashMapEg$Person@1fb3ebeb=1, WeakHashMapEg$Person@548c4f57=1}
+        Calling finalize method
+        after: {WeakHashMapEg$Person@548c4f57=1}
+    */
+    ```
+    <br>
+
+
