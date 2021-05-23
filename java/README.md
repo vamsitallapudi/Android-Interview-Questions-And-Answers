@@ -8,11 +8,18 @@
     If we declare it again, i.e., String b = “abc”, then b will point to same string from SCP.
     However, String b = new String(“abc”) always creates a new String object.
 
-- **Why Java doesnot support Multiple Inheritance?**<br>
+- **Why Java does not support Multiple Inheritance?**<br>
     A) If we inherit from two classes which have methods of same name, it is difficult for JVM to choose which one to inherit from. Hence creators of Java decided to skip multiple inheritance where as other languages like C++, Python supports Multiple Inheritance, where you have to specify explicitly specify which super class's method you need to use.
 
 - **What is the difference between Interface and Abstract Class?**<br>
     A) We can inherit multiple interfaces in Java using Interfaces where as we can inherit only one Abstract class. Abstract classes can access fields of a particular object so you can access or modify the state of the object where as in interfaces you cannot modify the state of the object.
+
+- **Can you create an object for Abstract Class directly?**<br>
+    A) No, we cannot create an object of an abstract class, but we can create a reference variable of an abstract class pointing to the object of its implementation.
+
+- **Can you create an object for an Interface directly?**<br>
+    A) No, similar to abstract class, we cannot create an object of an Interface. But we can create a reference variable of an Interface pointing to the object of its implementation.
+
 
 -   **Heap Space vs Stack Memory in Java?**<br/>
     A) 
