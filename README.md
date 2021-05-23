@@ -245,11 +245,6 @@ Quick Jump to Topics:
     A) Using Android Keystore<br/>
     <https://medium.com/@josiassena/using-the-android-keystore-system-to-store-sensitive-information-3a56175a454b>
 
--   **String a = “abc”;  String b = new String(“abc”); Will a == b ??**<br/>
-    A) It depends. Here with the first statement, i.e, String a = “abc”, JVM will search for a string with “abc” in String constant pool(SCP) and if its not there it will create a new Object.
-    If we declare it again, i.e., String b = “abc”, then b will point to same string from SCP.
-    However, String b = new String(“abc”) always creates a new String object.
-
 -  **What is Alarm Manager?**<br/>
     A) AlarmManager is a class which helps scheduling your Application code to run at some point of time or at particular time intervals in future. When an alarm goes off, the Intent that had been registered for it is broadcast by the system, automatically starting the target application if it is not already running. Registered alarms are retained while the device is asleep (and can optionally wake the device up if they go off during that time), but will be cleared if it is turned off and rebooted.
 

@@ -3,6 +3,17 @@
 -   **Is Java a Pass By Value or Pass by Reference?**<br/>
     A) Java is always a Pass by Value. Any value which is modified in the called function will not be reflected in the calling function. For Example, [Click Here.](https://stackoverflow.com/a/12429953/3424919)
 
+-   **String a = “abc”;  String b = new String(“abc”); Will a == b ??**<br/>
+    A) It depends. Here with the first statement, i.e, String a = “abc”, JVM will search for a string with “abc” in String constant pool(SCP) and if its not there it will create a new Object.
+    If we declare it again, i.e., String b = “abc”, then b will point to same string from SCP.
+    However, String b = new String(“abc”) always creates a new String object.
+
+- **Why Java doesnot support Multiple Inheritance?**<br>
+    A) If we inherit from two classes which have methods of same name, it is difficult for JVM to choose which one to inherit from. Hence creators of Java decided to skip multiple inheritance where as other languages like C++, Python supports Multiple Inheritance, where you have to specify explicitly specify which super class's method you need to use.
+
+- **What is the difference between Interface and Abstract Class?**<br>
+    A) We can inherit multiple interfaces in Java using Interfaces where as we can inherit only one Abstract class. Abstract classes can access fields of a particular object so you can access or modify the state of the object where as in interfaces you cannot modify the state of the object.
+
 -   **Heap Space vs Stack Memory in Java?**<br/>
     A) 
         <!-- TABLE_GENERATE_START -->
@@ -272,8 +283,6 @@
     2. Runtime.getRuntime().gc()
 
     Both are effectively equal. **Note:** There is no guarantee that any one of the above two methods will definitely run GC. We are just requesting JVM.
-
-- **?**<br>
 
 
 
