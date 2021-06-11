@@ -23,7 +23,7 @@
     public boolean equals(Object obj) {
         return (this == obj);
     }
-    
+
     // Internal code of .equals() in String class
         public boolean equals(Object anObject) {
         if (this == anObject) {
@@ -34,7 +34,6 @@
             if (!COMPACT_STRINGS || this.coder == aString.coder) {
                 return StringLatin1.equals(value, aString.value);
             }
-        }
         return false;
     }
     ```
