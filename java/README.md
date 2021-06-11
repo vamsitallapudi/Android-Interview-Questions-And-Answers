@@ -8,6 +8,38 @@
     If we declare it again, i.e., String b = “abc”, then b will point to same string from SCP.
     However, String b = new String(“abc”) always creates a new String object.
 
+-   **What is the difference between == and .equals() method in Java?**<br/>
+    A) == method refers to referential comparision. It checks if two variables are referencing to same memory address or not where as .equals() compares the structure (data) of two objects.
+
+    ```java
+        String a = new String("Hello");
+        String b = new String("Hello");
+        System.out.println(a==b); // false
+        System.out.println(a.equals(b)); // true
+    ```
+    In java.lang.Object class, .equals() simply check for == but for other implementations of objects like String, Integer, Double, they check for structure consistency.
+    ```java
+    // Internal code of .equals() in object class:
+    public boolean equals(Object obj) {
+        return (this == obj);
+    }
+    
+    // Internal code of .equals() in String class
+        public boolean equals(Object anObject) {
+        if (this == anObject) {
+            return true;
+        }
+        if (anObject instanceof String) {
+            String aString = (String)anObject;
+            if (!COMPACT_STRINGS || this.coder == aString.coder) {
+                return StringLatin1.equals(value, aString.value);
+            }
+        }
+        return false;
+    }
+    ```
+
+
 - **Why Java does not support Multiple Inheritance?**<br>
     A) If we inherit from two classes which have methods of same name, it is difficult for JVM to choose which one to inherit from. Hence creators of Java decided to skip multiple inheritance where as other languages like C++, Python supports Multiple Inheritance, where you have to specify explicitly specify which super class's method you need to use.
 
