@@ -11,7 +11,7 @@
     **2) Structural Equality (==):** Structural equality tells whether the data inside objects is equal or not.  Java is  Structural equality in Kotlin is represented by '==' where as in Java it is done by .equals() method.
 
     In Kotlin also we can use .equals method but it is recommended to use == because Kotlin internally converts a==b, for example, to the following code:
-```java
+```Kotlin
     a?.equals(b) ?: (b === null)
 ```
 
@@ -19,7 +19,7 @@
 -   **What is the use of vararg keyword in Kotlin?**<br/>
     A) varargs are used to pass unlimited variables to the constructor.
 
-    ```java
+    ```Kotlin
         fun sum(vararg values : Int) =  values.sum()
         assertEquals(5, sum(2,3)) // true
     ```
@@ -33,7 +33,7 @@
 
     Here's an example: 
         
-    ```Java
+    ```Kotlin
     data class Person(val name: String, val age: Int)
 
     // destructuring declarations
@@ -41,7 +41,7 @@
     println(username) // vamsi
     ```
     Here these username and userAge will directly point to the component functions of data class internally as follows:
-    ```java
+    ```Kotlin
     val username = Person.component1()
     val userAge = Person.component2()
     ```
@@ -65,11 +65,87 @@
     A) Those two data are objects are equal structurally but not referentially. 
 
     Here is an example:
-    ```java
-        data class Person(name:String)
-        //creating objects for data class
-        val a = Person("Vamsi")
-        val b = Person("Vamsi")
-        println(a==b) // true; a normal class would return false in this case
-        println(a===b) // false
+    ```Kotlin
+    data class Person(name:String)
+    //creating objects for data class
+    val a = Person("Vamsi")
+    val b = Person("Vamsi")
+    println(a==b) // true; a normal class would return false in this case
+    println(a===b) // false
     ```
+-   **What are various scoping functions in Kotlin and when to use each of them?**<br/>
+    A) There are 5 different scoping functions in Kotlin - let, apply, also, with, run
+
+    <b>1. Let:</b> let is an extension function that takes lambda block as parameter, has 'it' as object reference inside the block and returns the lambda block's result as return type.
+
+    Here's the syntax of let:
+    ```Kotlin
+    inline fun <T, R> T.let(block: (T) -> R): R {
+        return block(this)
+    }
+    ```
+
+
+    Here's an example:
+    ```Kotlin
+    val fullName : String = Person()?.let {
+        it.name = "Vamsi"
+        it.name + " Tallapudi" // return value
+    }
+    println(fullName) //Vamsi Tallapudi
+    ```
+    <b>2. with:</b> with takes the context object and the code block (lambda) as the arguments, has 'this' as object reference inside the block and performs the lambda functions operation on the context passed. Returns the lambda result as return value.
+
+    Here's the syntax:
+    ```Kotlin
+    inline fun <T, R> with(receiver: T, block: T.() -> R): R {
+        return receiver.block()
+    }
+    ```
+
+    Here's an example:
+    ```Kotlin
+    val myList = mutableListOf(1, 2, 3, 4, 5)
+    val additionOfSquares = with(myList) {
+        val squaresList= map { it * it }
+        squaresList.sum() //returns the sum value
+    }
+    println(additionOfSquares) // 55
+    ```
+
+    <b>3. apply:</b> <i>apply</i> is an extension function that takes  the code block (lambda) as an argument, has 'this' as object reference inside the block and performs the lambda function on the context. Returns context object as the return value.
+
+    ```Kotlin
+    val vamsi = Person().apply {
+        name = "Vamsi"
+        age = 21
+    }
+    println(vamsi.age) // 21
+    ```
+
+
+    <b>4. also:</b> <i>also</i> is an extension function that takes  the code block (lambda) as an argument, has 'it' as object reference inside the block and performs the lambda function on the context. Returns context object as the return value.
+
+    ```Kotlin
+    val vamsi = Person().apply
+    {
+        name = "Vamsi"
+    }.also {
+        it.age = 21
+    }
+    println(vamsi.age) // 21
+    ```
+
+    <b>4. run:</b> <i>run</i> is an extension function that takes  the code block (lambda) as an argument, has 'this' as object reference inside the block and performs the lambda function on the context. Returns the lambda result as return value.
+
+    ```Kotlin
+    val vamsi = Person().apply
+    {
+        name = "Vamsi"
+    }.also {
+        it.age = 21
+    }
+    println(vamsi.age) // 21
+    ```
+    
+    For more details, [Click Here.](https://medium.com/@fatihcoskun/kotlin-scoping-functions-apply-vs-with-let-also-run-816e4efb75f5)
