@@ -230,4 +230,16 @@
     1 printSmallest 5 // calling the function directly
     ```
 
+-   **What are Sealed classes in Kotlin?**
+    
+    A) Sealed classes are similar to enum classes which also has restrictive set of types allowed, except that Sealed classes can contains additional data to be propagated(which we cannot achieve with enum classes).
+
+    ```Kotlin
+    sealed class Result<out T: Any> {
+        data class Success<out T: Any>(val data: T): Result<T>()
+        data class Error(val exception: Exception): Result<Nothing>()
+    }
+    ```
+    Sealed classes can contain any other clases like data class, pojo class, or even other sealed classes.
+
 
