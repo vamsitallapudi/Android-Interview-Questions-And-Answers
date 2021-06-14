@@ -193,3 +193,40 @@
     ```
 
     We'll use this only in case if multiple lambdas are passed to function arguments. If there is only one lambda which need to be referenced in another function, we better not use inline function at all.
+
+
+
+-   **What is the use of crossinline in Kotlin?**
+    
+    A) When we don't want to return inside lambda function (non-local returns) that is passed as inline argument, we use crossinline keyword on that lambda argument.
+    
+    Here's an example:
+    ```Kotlin
+    fun createPerson() {
+        val person = Person()
+        person.name = "Vamsi"
+        performFunction {
+            println("Created a person with name: ${person.name}")
+    //        return  // Not allowed here as its crossinline
+        }
+    }
+
+    inline fun performFunction (crossinline x : () -> Unit) {
+        x()
+    }
+    ```
+
+-   **What is the use of infix in Kotlin?**
+    A) infix functions are used for declaring a short form notation of a function.
+
+    Here's an example:
+
+    ```Kotlin
+    infix fun Int.printSmallest(x: Int) {
+        print(if(this < x) this else x)
+    }
+
+    1 printSmallest 5 // calling the function directly
+    ```
+
+
