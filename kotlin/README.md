@@ -217,6 +217,7 @@
     ```
 
 -   **What is the use of infix in Kotlin?**
+
     A) infix functions are used for declaring a short form notation of a function.
 
     Here's an example:
