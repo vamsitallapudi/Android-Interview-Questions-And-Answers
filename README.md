@@ -266,6 +266,16 @@ Quick Jump to Topics:
     Example of this Asymmetric encryption are HTTPS using SSL certificate, Bitcoin, etc.
     For more info, refer to this [video](https://youtu.be/AQDCe585Lnc)
 
+### Android Memory Related
+
+-   **How do you create a Memory Leak in Android?**<br/>
+    A) By passing the context to static block (class or method), we can create a Memory Leak.
+
+-   **How do you avoid a Memory Leak in Android?**<br/>
+    A) By making the objects eligible for GC (Garbage Collection) after a class (Activity or Fragment) is destroyed. We can also use Weak References like WeakHashMaps to loosely hold the data and make it easily available to GC.
+
+-   **How do you identify a Memory Leak in Android?**<br/>
+    A) By using Profiler in Android Studio or by using LeakCanary Library in Android.
 
 ### Android Battery Related
 -   **How do you reduce battery consumption?**<br/>
