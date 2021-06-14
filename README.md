@@ -331,7 +331,7 @@ Quick Jump to Topics:
 ### RxJava Related Questions:
 
 More additional info to get started with RxJava is available at:
-[Getting Started with RxJava2](https://www.coderefer.com/rxandroid-tutorial-getting-started/)
+[Getting Started with RxJava2](https://www.coderefer.com/blog/rxandroid-tutorial-getting-started/)
 
 -   **What is an Observable in RXJava2?**<br/>
     A) An Observable  simply emits the data to those which subscribed to it. All the emission is done asynchronously to the subscribers. A simple Observable can be created as follows:
