@@ -11,9 +11,9 @@
     **2) Structural Equality (==):** Structural equality tells whether the data inside objects is equal or not.  Java is  Structural equality in Kotlin is represented by '==' where as in Java it is done by .equals() method.
 
     In Kotlin also we can use .equals method but it is recommended to use == because Kotlin internally converts a==b, for example, to the following code:
-```Kotlin
-    a?.equals(b) ?: (b === null)
-```
+    ```Kotlin
+        a?.equals(b) ?: (b === null)
+    ```
 
 
 -   **What is the use of vararg keyword in Kotlin?**<br/>
@@ -76,7 +76,7 @@
 -   **What are various scoping functions in Kotlin and when to use each of them?**<br/>
     A) There are 5 different scoping functions in Kotlin - let, apply, also, with, run
 
-    <b>1. Let:</b> let is an extension function that takes lambda block as parameter, has 'it' as object reference inside the block and returns the lambda block's result as return type.
+    <b>1. Let:</b> <i>let</i> is an extension function that takes lambda block as parameter, has 'it' as object reference inside the block and returns the lambda block's result as return type.
 
     Here's the syntax of let:
     ```Kotlin
@@ -94,7 +94,7 @@
     }
     println(fullName) //Vamsi Tallapudi
     ```
-    <b>2. with:</b> with takes the context object and the code block (lambda) as the arguments, has 'this' as object reference inside the block and performs the lambda functions operation on the context passed. Returns the lambda result as return value.
+    <b>2. with:</b> <i>with</i> takes the context object and the code block (lambda) as the arguments, has 'this' as object reference inside the block and performs the lambda functions operation on the context passed. Returns the lambda result as return value.
 
     Here's the syntax:
     ```Kotlin
@@ -147,5 +147,49 @@
     }
     println(vamsi.age) // 21
     ```
-    
+
     For more details, [Click Here.](https://medium.com/@fatihcoskun/kotlin-scoping-functions-apply-vs-with-let-also-run-816e4efb75f5)
+
+-   **What are inline functions? When to use them?**<br/>
+    A) Functions that take lambda parameter as arguments generates objects inside calling function's code. If these functions are called at multiple places, multiple objects are created which affects the performance of our Android App. To avoid these memory allocations created by lambda expressions (anonymous objects are created), we make the functions inline by adding a keyword - 'inline' to our function.
+
+    ```Kotlin
+    inline fun SharedPreferences.edit(commit: Boolean = false, action: SharedPreferences.Editor.() -> Unit) {
+        val editor = edit()
+        action(editor)
+        if(commit)
+            editor.commit()
+        else
+            editor.apply()
+
+    }
+    ```
+    Inline functions are generally used when we need to pass small functions as parameters. It is generally not advisable to pass large functions to inline functions.
+
+-   **What are noinline keyword? Where we need to use them in realtime scenario?**
+
+    A) We cannot pass a lambda function, which comes as argument inside inline function, to another function that accepts lambda. We will get an error stating 'Illegal usage of inline-parameter'. In this case we need to pass that lambda function with noinline keyword which makes the compiler instead of writing the code to the called location, creates the function for that specific function.
+
+    Here's an example:
+    ```Kotlin
+    inline fun SharedPreferences.edit(
+    commit: Boolean = false,
+    noinline anotherFunction: Int.() -> Unit = {},
+    action: SharedPreferences.Editor.() -> Unit)
+    {
+        myFun(anotherFunction)
+        val editor = edit()
+        action(editor)
+        if(commit)
+            editor.commit()
+        else
+            editor.apply()
+
+    }
+
+    fun myFun(importantAction: Int.() -> Unit) {
+        importantAction(-1)
+    }
+    ```
+
+    We'll use this only in case if multiple lambdas are passed to function arguments. If there is only one lambda which need to be referenced in another function, we better not use inline function at all.
