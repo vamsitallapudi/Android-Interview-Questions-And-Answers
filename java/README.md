@@ -164,6 +164,27 @@
   **2.Collections.synchronizedMap()**
   Synchronized HashMap allows only one thread to perform read / write operations at a time as all of its methods are declared synchronized. Iterators from both classes shold be used inside synchronized block but the iterator from Synchronized HashMap is Fail-Fast.
 
+  ```Java
+        Map<Integer, String> studentsMap = new HashMap<>();
+        studentsMap.put(1, "Gowri");
+        studentsMap.put(2, "Vamsi");
+        studentsMap.put(3, "Krishna");
+
+        Map<Integer, String> syncMap =          Collections.synchronizedMap(studentsMap);
+
+    // synchronized block is required to iterate through Synchronized hashmap for consistency of data between threads
+    synchronized (syncMap) {
+        Iterator<Map.Entry<Integer, String>> studentsEntry =
+        syncMap.entrySet().iterator();
+
+        while(studentsEntry.hasNext()) {
+            System.out.println(
+                studentsEntry.next().getValue()
+                );
+        }
+    }
+  ```
+
 
 - **Does HashMap maintains Order in which items are inserted?** <br>
   A) No. We have to use LinkedHashMap to maintain the order.

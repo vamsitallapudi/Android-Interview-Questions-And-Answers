@@ -177,7 +177,9 @@
     noinline anotherFunction: Int.() -> Unit = {},
     action: SharedPreferences.Editor.() -> Unit)
     {
+        // passing noinline function to another function
         myFun(anotherFunction)
+
         val editor = edit()
         action(editor)
         if(commit)
@@ -241,5 +243,22 @@
     }
     ```
     Sealed classes can contain any other clases like data class, pojo class, or even other sealed classes.
+-   **What is a Coroutine?**
+    A) Coroutine is a Lightweight thread which helps in performing Asynchronous programming. Basically it is a concurrency design pattern which helps to run the long-running tasks which otherwise block the main thread.
+    Advantages:
+    1. Lightweight: We can run many coroutines on a single thread,
+    2. Built in Cancellation support: Cancellation is propagated through the running Coroutine Hierarchy.
+    3. Fewer Memory leaks due to Structured Concurrency.
 
+-   **What is Structured Concurrency?**
+    A)
+
+-   **Does Coroutine runs in a Single thread?**
+    A) A coroutine is not bound to any particular thread. It may suspend its execution in one thread and resume in another one.
+
+-   **What is Coroutine Scope?**
+    A) Keeps track of any Coroutine created using launch or async functions (these extension functions are available in CoroutineScope).
+
+-   **How to create Coroutine Scope?**
+    A) 
 
