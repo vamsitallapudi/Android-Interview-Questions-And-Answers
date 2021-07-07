@@ -276,10 +276,27 @@ Quick Jump to Topics:
 
     To see Cipher in action, see the following [code commit](https://github.com/vamsitallapudi/Coderefer-Java-Projects/commit/443c4f7700fd68391da2ccf40f85a7e3bccd573d#diff-25a6634263c1b1f6fc4697a04e2b9904ea4b042a89af59dc93ec1f5d44848a26).
 
--   **What is SSL Pinning? How do you implement it in Android?**
+-   **What is SSL Pinning?**
 
     A)Generally SSL Certificates are issued by CAs (Certificate Authorities). SSL Certificates are used to secure a connection between a Client and a Server. But there might be some chances that if any CA is breached, our app becomes vulnerable to MITM (Man in the Middle Attack). To mitigate this problem, we can pin our Server's SSL Certificate in our Application as an additional security layer so that we can check if the certificate is really from our server or not. In few words, SSL Pinning is to increase security. Disadvantages is if the server changes the certificate, Client app needs a software update.
 
+-   **How do you implement it in Android?**
+    
+    A) SSL Pinning can be done using OkHttpClient's Builder methods as follows:
+    ```Kotlin
+        val certificatePinner = CertificatePinner.Builder()
+        .add(
+            "www.coderefer.com",
+    "sha256/ZCOF65ADBWPDK8P2V7+mqodtvbsTRR/D74FCU+CEEA="
+        )
+        .build()
+    val okHttpClient = OkHttpClient.Builder()
+        .certificatePinner(certificatePinner)
+        .build()
+    ```
+
+    Then you supply this generated okHttpClient object to Retrofit.
+    
     For more info, click on this [link](https://appmattus.medium.com/android-security-ssl-pinning-1db8acb6621e).
 
 ### Android Memory Related
