@@ -2,7 +2,7 @@
 
   ![Android Interview Questions Coderefer Thumbnail](/assets/android-interview-questions-cr-thumbnail.jpg)
 
-### Curated List of Real-time Android Interview Questions. Found Any Errors / Want to help fellow developers? - Create a pull request in  [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
+### Curated List of Real-time Android Interview Questions. Please star this repo if you find it useful. Found Any Errors? Want to help fellow developers? - Create a pull request in  [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
 
 Quick Jump to Topics:
  * [Core Android](#core-android)
