@@ -5,11 +5,14 @@
 ### Curated List of Real-time Android Interview Questions. Please star this repo if you find it useful. Found Any Errors? Want to help fellow developers? - Create a pull request in  [Github](https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers).
 
 Quick Jump to Topics:
- * [Core Android](#core-android)
- * [Java Interview Questions](/java/README.md)
- * [Kotlin Interview Questions](/kotlin/README.md)
- * [Dagger](#dagger-2-related-questions)
- * [RxJava](#rxjava-related-questions)
+ > * [Core Android](#core-android)
+ >> * [Android Security Related](#android-security-related)
+ >> * [Android Battery Saving](#android-battery-related)
+ >> * [Android Memory Related](#android-memory-related)
+ > * [Java Interview Questions](/java/README.md)
+ > * [Kotlin Interview Questions](/kotlin/README.md)
+ > * [Dagger](#dagger-2-related-questions)
+ > * [RxJava](#rxjava-related-questions)
 
 ### Core Android
 
