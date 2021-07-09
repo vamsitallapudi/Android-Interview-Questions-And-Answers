@@ -156,11 +156,12 @@ Quick Jump to Topics:
 -   **What is Pending Intent?**<br/>
     A)A PendingIntent is a token that you give to a foreign application (e.g. NotificationManager, AlarmManager, Home Screen AppWidgetManager, or other 3rd party applications), which allows the foreign application to use your application's permissions to execute a predefined piece of code. It specifies a task that requires to be performed in future.
 
--   **What is an Intent Service?**<br/>
-    A) IntentService is a subclass of Service that can perform tasks using worker thread unlike service that blocks main thread.
+-   **What is an Intent Service? What is the method that differentiates it to make Service run in background?**
 
--   **What is the method that differentiates it to make Service run in background?**<br/>
-    A) onHandleIntent() is the method that helps the IntentService to run a particular code block declared inside it, in worker/background thread.
+    A) IntentService is a subclass of Service that can perform tasks using worker thread unlike service that blocks main thread. The additional method of IntentService is -
+    **<i>onHandleIntent(Intent)</i>** which helps the IntentService to run a particular code block declared inside it, in worker/background thread. The speciality of Intent Service is if there are more tasks given to it, IntentService will pass those intents one by one to the Worker thread. So if there are multiple download operations to be handled, They will be performed in a sequential order. Only one request will be processed at a time.
+
+    **Note:** IntentService is deprecated from API 30. This is due to background restrictions imposed from API level 26. It is now recommended to use WorkManager or JobIntentService. For more Info, [Click Here](https://developer.android.com/reference/android/app/IntentService)
 
 -   **How to Stop an IntentService?**<br/>
     A) An IntentService automatically stops itself after its job is done. We do not need to explicitly call any methods to stop an IntentService unlike Service which requires stopSelf() or StopService(intent:Intent).
