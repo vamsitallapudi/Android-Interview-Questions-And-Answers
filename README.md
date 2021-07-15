@@ -97,6 +97,9 @@ Quick Jump to Topics:
 -   **What is AAPT?**<br/>
     A) AAPT2 (Android Asset Packaging Tool) is a build tool that Android Studio and Android Gradle Plugin use to compile and package your app’s resources. AAPT2 parses, indexes, and compiles the resources into a binary format that is optimized for the Android platform.
 
+-   **What is an Intent?**<br/>
+    A) Intent is basically a message passing mechanism between different components of Android, except for Content Provider. You can use intent to start any component in Android.
+
 -   **What are the different types of Intents?**<br/>
     A) There are two types of intents:
 
@@ -147,16 +150,55 @@ Quick Jump to Topics:
 
 -   **When does a Bound Service stops?**<br/>
     A) A Bound Service will stop automatically by the system when all the Application Components bound to it are unbinded.
+    
+-   **How to start a Foreground Service?**
 
--   **What is the difference between START_NOT_STICKY, START_STICKY AND START_REDELIVER_INTENT?**<br/>
-    A) **START_NOT_STICKY:**<br/>
-    If the system kills the service after onStartCommand() returns, do not recreate the service unless there are pending intents to deliver. This is the safest option to avoid running your service when not necessary and when your application can simply restart any unfinished jobs.<br/>
-    **START_STICKY:**<br/>
-    If the system kills the service after onStartCommand() returns, recreate the service and call onStartCommand(), but do not redeliver the last intent. Instead, the system calls onStartCommand() with a null intent unless there are pending intents to start the service. In that case, those intents are delivered. This is suitable for media players (or similar services) that are not executing commands but are running indefinitely and waiting for a job.<br/>
-    **START_REDELIVER_INTENT:**<br/>
+    A) We can start a foreground service by using startForegroundService(Intent intent) or by internally calling startForeground() on the service.
+
+    For Example, [Click Here](https://github.com/vamsitallapudi/Coderefer-Android-Projects/tree/main/ServicesExample)
+
+-   **What is Sticky Intent in Android?**  
+    
+    A) Sticks with Android, for future broadcast listeners. For example if BATTERY_LOW event occurs then that Intent will stick with Android so that any future requests for BATTERY_LOW, will return the Intent.
+
+-   **What is Pending Intent in Android?**<br>
+    A) Pending Intent is an intent which you want to trigger at some time in future, even when your application is not alive. This intent can be used by other application which allows it to execute that intent with the same permissions as of our application.
+
+    ```java
+    Intent intent = new Intent(this, AnyActivity.class);
+
+    // Creating a pending intent and wrapping our intent
+    PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    try {
+        // Perform the operation associated with our pendingIntent
+        pendingIntent.send();
+    } catch (PendingIntent.CanceledException e) {
+        e.printStackTrace();
+    }
+    ```
+
+    PendingIntent uses the following methods to handle the different types of intents:
+
+    ```java
+    PendingIntent.getActivity();//Retrieves a PendingIntent to start an Activity
+    PendingIntent.getBroadcast();// Retrieves a PendingIntent to perform a Broadcast
+    PendingIntent.getService();// Retrieves a PendingIntent to start a Service
+    ```
+
+
+-   **What is the difference between START_NOT_STICKY, START_STICKY AND START_REDELIVER_INTENT?**
+-   
+    A) **START_NOT_STICKY:**<br>
+    If the system kills the service after onStartCommand() returns, do not recreate the service unless there are pending intents to deliver. This is the safest option to avoid running your service when not necessary and when your application can simply restart any unfinished jobs.
+    
+    **START_STICKY:**<br>
+    If the system kills the service after onStartCommand() returns, recreate the service and call onStartCommand(), but do not redeliver the last intent. Instead, the system calls onStartCommand() with a null intent unless there are pending intents to start the service. In that case, those intents are delivered. This is suitable for media players (or similar services) that are not executing commands but are running indefinitely and waiting for a job.
+
+    **START_REDELIVER_INTENT:**<br>
     If the system kills the service after onStartCommand() returns, recreate the service and call onStartCommand() with the last intent that was delivered to the service. Any pending intents are delivered in turn. This is *suitable for services that are actively performing a job that should be immediately resumed, such as downloading a file.*
 
--   **What is Pending Intent?**<br/>
+-   **What is Pending Intent?**
+   
     A)A PendingIntent is a token that you give to a foreign application (e.g. NotificationManager, AlarmManager, Home Screen AppWidgetManager, or other 3rd party applications), which allows the foreign application to use your application's permissions to execute a predefined piece of code. It specifies a task that requires to be performed in future.
 
 -   **What is an Intent Service? What is the method that differentiates it to make Service run in background?**
