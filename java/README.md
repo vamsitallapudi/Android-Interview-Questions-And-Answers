@@ -3,6 +3,10 @@
 -   **Is Java a Pass By Value or Pass by Reference?**<br/>
     A) Java is always a Pass by Value. Any value which is modified in the called function will not be reflected in the calling function. For Example, [Click Here.](https://stackoverflow.com/a/12429953/3424919)
 
+-   **Why do we need Getters and Setters in Java? Why cant we access them directly by making them Public**<br/>
+
+    A) They ensure Encapsulation in Java so that they will restrict the access directly. The classes which own the fields and they have control over the data passed. They can perform validation checks before setting the data or they can check if the requested getter parameter is null and initialize the data.
+
 -   **String a = “abc”;  String b = new String(“abc”); Will a == b ??**<br/>
     A) It depends. Here with the first statement, i.e, String a = “abc”, JVM will search for a string with “abc” in String constant pool(SCP) and if its not there it will create a new Object.
     If we declare it again, i.e., String b = “abc”, then b will point to same string from SCP.
