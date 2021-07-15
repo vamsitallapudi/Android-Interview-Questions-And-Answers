@@ -3,6 +3,75 @@
 -   **Is Java a Pass By Value or Pass by Reference?**<br/>
     A) Java is always a Pass by Value. Any value which is modified in the called function will not be reflected in the calling function. For Example, [Click Here.](https://stackoverflow.com/a/12429953/3424919)
 
+-   **What are different types of Polymorphism?**<br/>
+    A) There are 2 Types of Polymorphism in Java.
+    1. **CompileTime Polymorphism**<br/> It is the polymorphism which in which JVM knows which method to call at compile time. Method Overloading is a good example of this type of polymorphism.
+
+    ```java
+    // compile-time polymorphism
+    public class Coderefer {
+    
+        // First addition function
+        public static int add(int a, int b)
+        {
+            return a + b;
+        }
+    
+        // Second addition function
+        public static double add(
+            double a, double b)
+        {
+            return a + b;
+        }
+    
+        // Driver code
+        public static void main(String args[])
+        {
+            // Here, the first addition
+            // function is called
+            System.out.println(add(2, 3));
+    
+            // Here, the second addition
+            // function is called
+            System.out.println(add(2.0, 3.0));
+        }
+    }
+    ```
+
+    2. **RunTime Polymorphism**<br/> It is the polymorphism which in which JVM knows which method to call at run time. Method Overriding is a good example of this type of polymorphism.
+
+    ```java
+    // run-time polymorphism
+    class Test {
+    
+        // Implementing a method
+        public void method()
+        {
+            System.out.println("Method 1");
+        }
+    }
+ 
+    // Defining a child class
+    public class Coderefer extends Test {
+    
+        // Overriding the parent method
+        public void method()
+        {
+            System.out.println("Method 2");
+        }
+    
+        // Driver code
+        public static void main(String args[])
+        {
+            Test test = new Coderefer();
+    
+            test.method();
+        }
+    }
+
+    // Output: Method 2
+    ```
+
 -   **Why do we need Getters and Setters in Java? Why cant we access them directly by making them Public**<br/>
 
     A) They ensure Encapsulation in Java so that they will restrict the access directly. The classes which own the fields and they have control over the data passed. They can perform validation checks before setting the data or they can check if the requested getter parameter is null and initialize the data.
