@@ -144,7 +144,7 @@
     3. Since ArrayLists are not thread-safe (non-synchronized), they are usually fast.
 
 - **What is Synchronization in Java?** <br>
-    A) Synchronization in Java is the ability to control the access to code block by allowing only one thread to work on it at a time. One thread acquires the lock while working on this code block and any other thread trying to access the same code block will have to wait until the first thread releases the lock after the execution of code block is completed.
+    A) Synchronization in Java is the ability to control the access to code block by allowing only one thread to work on it at a time. One thread acquires the lock on the object while working on this code block and any other thread trying to access the object's any synchronized block / method will have to wait until the first thread releases the lock (after the execution of code block is completed).
 
 - **What are Fail-Fast and Fail-Safe Iterators?**<br>
     A) Fail-Fast iterators raise ***ConcurrentModificationException*** when an error occurs. Eg: Collections.synchronizedMap() for HashMap & Collections.synchronizedList() for ArrayList.
