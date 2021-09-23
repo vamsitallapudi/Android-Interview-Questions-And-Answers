@@ -23,6 +23,7 @@
         fun sum(vararg values : Int) =  values.sum()
         assertEquals(5, sum(2,3)) // true
     ```
+    Note: Only one vararg can be passed to a function. Multiple varargs leads to compilation error.
 
 -   **What are Destructuring Declarations in Kotlin?**<br/>
     A) Destructuring declarations allows us to destructure an object to various variables.
@@ -34,18 +35,17 @@
     Here's an example: 
         
     ```Kotlin
-    data class Person(val name: String, val age: Int)
+        data class Person(val name: String, val age: Int)
 
-    // destructuring declarations
-    val (username, userAge) = Person("vamsi", "21")
-    println(username) // vamsi
+        // destructuring declarations
+        val (username, userAge) = Person("vamsi", "21")
+        println(username) // vamsi
     ```
     Here these username and userAge will directly point to the component functions of data class internally as follows:
     ```Kotlin
-    val username = Person.component1()
-    val userAge = Person.component2()
+        val username = Person.component1()
+        val userAge = Person.component2()
     ```
-
 
 -   **What are Data Classes?**<br/>
     A) Data classes are specifically designed to hold the data. 
@@ -66,15 +66,19 @@
 
     Here is an example:
     ```Kotlin
-    data class Person(name:String)
-    //creating objects for data class
-    val a = Person("Vamsi")
-    val b = Person("Vamsi")
-    println(a==b) // true; a normal class would return false in this case
-    println(a===b) // false
+        data class Person(name:String)
+        //creating objects for data class
+        val a = Person("Vamsi")
+        val b = Person("Vamsi")
+        println(a==b) // true; a normal class (without .equals() overridden) would return false in this case
+        println(a===b) // false
     ```
 -   **What are various scoping functions in Kotlin and when to use each of them?**<br/>
-    A) There are 5 different scoping functions in Kotlin - let, apply, also, with, run
+    A) There are 5 different scoping functions in Kotlin - let, apply, also, with, run. Basically they are used to execute a block of code within the context of an object.
+
+    ***Scope Functions Table:***
+
+    ![Scope Functions Table](/assets/kotlin/scope-funcs-table.png)
 
     <b>1. Let:</b> <i>let</i> is an extension function that takes lambda block as parameter, has 'it' as object reference inside the block and returns the lambda block's result as return type.
 
@@ -84,8 +88,7 @@
         return block(this)
     }
     ```
-
-
+    
     Here's an example:
     ```Kotlin
     val fullName : String = Person()?.let {
@@ -114,6 +117,16 @@
     ```
 
     <b>3. apply:</b> <i>apply</i> is an extension function that takes  the code block (lambda) as an argument, has 'this' as object reference inside the block and performs the lambda function on the context. Returns context object as the return value.
+
+    Here's the syntax:
+    ```Kotlin
+    public inline fun <T> T.apply(block: T.() -> Unit): T {
+        ...
+        block()
+        return this
+    }
+    ```
+    Here's an example:
 
     ```Kotlin
     val vamsi = Person().apply {
@@ -254,11 +267,14 @@
     A)
 
 -   **Does Coroutine runs in a Single thread?**
+
     A) A coroutine is not bound to any particular thread. It may suspend its execution in one thread and resume in another one.
 
 -   **What is Coroutine Scope?**
+
     A) Keeps track of any Coroutine created using launch or async functions (these extension functions are available in CoroutineScope).
 
 -   **How to create Coroutine Scope?**
+
     A) 
 
